@@ -6,6 +6,7 @@
     "axios": "^0.16.1",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "history": "^4.6.1",
+    "normalize.css": "^6.0.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
@@ -17,7 +18,8 @@
     "redux-storage": "^4.1.2",
     "redux-storage-decorator-filter": "^1.1.8",
     "redux-storage-engine-localstorage": "^1.1.4",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "sass-resources-loader": "^1.2.1"
   },
   "devDependencies": {
     "autoprefixer": "6.7.2",
@@ -48,10 +50,12 @@
     "http-proxy-middleware": "0.17.3",
     "jest": "18.1.0",
     "json-loader": "0.5.4",
+    "node-sass": "^4.5.2",
     "object-assign": "4.1.1",
     "postcss-loader": "1.2.2",
     "promise": "7.1.1",
     "react-dev-utils": "^0.5.2",
+    "sass-loader": "^6.0.3",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
     "webpack": "1.14.0",
@@ -92,7 +96,9 @@
     "presets": [
       "react-app"
     ],
-    "plugins": ["transform-async-to-generator"]
+    "plugins": [
+      "transform-async-to-generator"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"

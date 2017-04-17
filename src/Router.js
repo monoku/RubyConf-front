@@ -4,8 +4,7 @@ import { ConnectedRouter } from 'react-router-redux'
 import { Provider } from 'react-redux'
 
 import store, { history } from './store/'
-
-const  HomePage =  () => <h1> Home</h1>
+import HomePage from './components/Pages/HomePages'
 
 const  App = () => (
   <Provider store={store}>
