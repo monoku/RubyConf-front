@@ -148,7 +148,7 @@ module.exports = {
         loader: 'style!css?importLoaders=1!postcss'
       },
       {
-        test: /\.sass$/,
+        test: /\.(sass|scss)$/,
         include: paths.appSrc,
         loaders: [
           "style",
