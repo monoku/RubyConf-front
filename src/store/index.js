@@ -1,0 +1,37 @@
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import createHistory from 'history/createBrowserHistory'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import * as storage from 'redux-storage'
+import createEngine from 'redux-storage-engine-localstorage'
+import filter from 'redux-storage-decorator-filter'
+import { routerMiddleware } from 'react-router-redux'
+
+import rootReducer from './reducers'
+
+export const history = createHistory()
+
+const engine = createEngine('rubyConf-app')
+
+const filteredEngine = filter(engine, ['app'])
+
+const storageMiddleware = storage.createMiddleware(
+  filteredEngine,
+  [],
+  [
+    'LOADING_APP'
+  ]
+)
+
+const middleware = composeWithDevTools(
+  applyMiddleware(thunk, storageMiddleware, routerMiddleware(history))
+)
+
+const reducer = storage.reducer(rootReducer)
+const store = createStore(reducer, middleware)
+
+const load = storage.createLoader(engine)
+
+load(store)
+
+export default store
