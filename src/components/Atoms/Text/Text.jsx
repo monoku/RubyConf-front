@@ -26,7 +26,9 @@ Text.defaultProps = {
 
 Text.propTypes = {
   type: PropTypes.oneOf([
-    'Big'
+    'Big',
+    'Medium',
+    'Small'
   ]).isRequired,
   children: PropTypes.string.isRequired,
   className: PropTypes.string

@@ -45,7 +45,9 @@ Title.defaultProps = {
 
 Title.propTypes = {
   type: PropTypes.oneOf([
-    'Big'
+    'Big',
+    'Medium',
+    'Small'
   ]).isRequired,
   Title: PropTypes.string.isRequired,
   className: PropTypes.string
