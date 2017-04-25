@@ -1,0 +1,52 @@
+:global .SelectBox {
+  display: block;
+  margin: 10px 5px;
+}
+
+.Select-control{
+  box-shadow: 0 0.09375rem 0.15625rem 0 rgba(196, 196, 196, 0.4);
+  border: none;
+  font-family: Roboto;
+  font-size: 17px;
+  line-height: 1.59;
+  color: #4e4e4e;
+}
+
+.Select-menu-outer{
+  background-color: #ffffff;
+  box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.12);
+  border: solid 1px #ebebeb;
+  border: solid 1px var(--white-two);
+}
+.Select-menu{
+
+}
+.Select-option{
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 2.07;
+  text-align: right;
+  color: #0024a7;
+}
+.Select-option .is-selected{
+   color: #0024a7;
+}
+
+.Select-option .is-focused{
+   color: #0024a7;
+}
+.ErrorText{
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ff4141;
+  bottom: -25px;
+  right: 5px;
+  display: flex;
+  justify-content: flex-end;
+}

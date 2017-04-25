@@ -1,0 +1,29 @@
+
+.Link
+  font-family: $roboto
+  font-size: $font-text-small
+  font-weight: 500
+  line-height: 1.57
+  color: $cobalt-blue
+  margin: 5px 10px
+  text-decoration: none
+  position: relative
+  &:hover:after
+    background-color: $cherry-red-two
+    width: 65%
+    height: 2px
+    transition: width 0.5s ease
+  &:hover > .Icon
+    color: $cobalt-blue 
+  &:after
+    content: ''
+    width: 45%
+    height: 1px
+    background-color: $cobalt-blue
+    margin: 2px 10px
+    position: absolute
+    bottom: -3px
+    left: -10px
+.Icon
+  font-size: $font-text-extra-small
+  color: $greyish

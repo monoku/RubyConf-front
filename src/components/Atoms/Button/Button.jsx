@@ -27,7 +27,9 @@ Button.defaultProps = {
   onClick: () => null,
   theme: 'Primary',
   options: null,
-  btnLoading: null
+  btnLoading: null,
+  className: '',
+  disabled: false
 }
 
 Button.propTypes = {
@@ -41,11 +43,6 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   className: PropTypes.string,
   options: PropTypes.object
-}
-
-Button.defaultProps = {
-  className: '',
-  disabled: false
 }
 
 export default Button
