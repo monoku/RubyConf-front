@@ -1,4 +1,4 @@
-.Button
+%Button
   border-radius: 2px
   border: none
   box-shadow: none
@@ -26,7 +26,7 @@
     cursor: auto
 
 .Primary
-  composes: Button
+  @extend %Button
   color: #ffffff
   border: 1px solid $cobalt-blue 
   background-color: $cobalt-blue 
@@ -35,7 +35,7 @@
     background-color : $darkblue
 
 .Second
-  composes: Button
+  @extend %Button
   color: #ffffff
   border: 1px solid $lightish-blue 
   background-color: $lightish-blue 
@@ -43,8 +43,17 @@
     border: 1px solid $cobalt-blue
     background-color : $cobalt-blue
 
+.Red
+  @extend %Button
+  color: #ffffff
+  border: 1px solid $cherry-red-two 
+  background-color: $cherry-red-two 
+  &:hover
+    border: 1px solid $blood-red
+    background-color : $blood-red
+
 .Linear
-  composes: Button
+  @extend %Button
   color: #greyish-brown
   border: 1px solid $greyish-brown
   background-color: transparent 

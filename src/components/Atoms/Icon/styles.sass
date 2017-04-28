@@ -1,62 +1,66 @@
-.Icon
+%Icon
   -webkit-font-smoothing: antialiased
   margin: 0px 5px
   &:before
     font-family: icomoon
 
 .IconArrowDown
-  composes: Icon
+  @extend %Icon
   &:before
     content: $IconArrowDown
 .IconArrowRight
-  composes: Icon
+  @extend %Icon
   &:before
     content: $IconArrowRight
 .IconCalendar
-  composes: Icon
+  @extend %Icon
   &:before
     content: $IconCalendar
 .IconCoffee
-  composes: Icon
+  @extend %Icon
   &:before
     content: $IconCoffee
 .IconConference
-  composes: Icon
+  @extend %Icon
   &:before
     content: $IconConference
 .IconLunch
-  composes: Icon
+  @extend %Icon
   &:before
     content: $IconLunch
 .IconMessage
-  composes: Icon
+  @extend %Icon
   &:before
     content: $IconMessage
 .IconPeople
-  composes: Icon
+  @extend %Icon
   &:before
     content: $IconPeople
 .IconPlace
-  composes: Icon
+  @extend %Icon
   &:before
     content: $IconPlace
 .IconRubyConf
-  composes: Icon
+  @extend %Icon
   &:before
     content: $IconRubyConf
 .IconTicket
-  composes: Icon
+  @extend %Icon
   &:before
     content: $IconTicket
 .IconTime
-  composes: Icon
+  @extend %Icon
   &:before
     content: $IconTime
 .IconFacebook
-  composes: Icon
+  @extend %Icon
   &:before
     content: $IconFacebook
 .IconTwitter
-  composes: Icon
+  @extend %Icon
   &:before
     content: $IconTwitter
+.IconMenu
+  @extend %Icon
+  &:before
+    content: $IconMenu

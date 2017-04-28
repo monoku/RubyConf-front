@@ -140,7 +140,7 @@ module.exports = {
       // in the main CSS file.
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract(
+        loaders: ExtractTextPlugin.extract(
           'style',
           'css?importLoaders=1!postcss',
           extractTextPluginOptions
@@ -155,8 +155,7 @@ module.exports = {
           "css?importLoaders=1&modules&localIdentName=[name]__[local]___[hash:base64:5]",
           "postcss",
           'sass',
-          "sass-resources"],
-        extractTextPluginOptions
+          "sass-resources"]
       },
       // JSON is not enabled by default in Webpack but both Node and Browserify
       // allow it implicitly so we also enable it.
@@ -204,14 +203,14 @@ module.exports = {
       minify: {
         removeComments: true,
         collapseWhitespace: true,
-        removeRedundantAttributes: true,
+        removeRedundantAttributes: false,
         useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
+        removeEmptyAttributes: false,
+        removeStyleLinkTypeAttributes: false,
         keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true
+        minifyJS: false,
+        minifyCSS: false,
+        minifyURLs: false
       }
     }),
     // Makes some environment variables available to the JS code, for example:

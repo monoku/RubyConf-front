@@ -4,11 +4,11 @@ import React, { Component,
 
 class Divider extends Component {
   componentDidMount() {
-    this.animateComponentEvent()
+    this.animateComponentEvent(this.props.name)
   }
-  animateComponentEvent() {
-    var divider = document.querySelector('#divider');
-    var gradient = document.querySelector('#linearGradient-1');
+  animateComponentEvent(name) {
+    var divider = document.querySelector(`#${name}`);
+    var gradient = divider.getElementsByTagName('linearGradient')[0];
     var offset = 50; // 60% view-height;
 
     var colors = {
@@ -38,11 +38,11 @@ class Divider extends Component {
   }
 
   render() {
-    const {basicColor, PrimaryColor, SecondColor} = this.props
+    const {basicColor, PrimaryColor, SecondColor, name} = this.props
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="817px" height="36px" viewBox="0 0 817 36" version="1.1" id="divider">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="817px" height="36px" viewBox="0 0 817 36" version="1.1" id={name}>
         <defs>
-          <linearGradient x1="0%" y1="0%" x2="100%" y2="0%" id="linearGradient-1" gradientUnits="userSpaceOnUse">
+          <linearGradient x1="0%" y1="0%" x2="100%" y2="0%" id={`linearGradient-1`} gradientUnits="userSpaceOnUse">
             <stop stopColor={PrimaryColor} offset="0%"/>
             <stop stopColor={SecondColor} offset="0%"/>
             <stop stopColor={basicColor} offset="0%"/>

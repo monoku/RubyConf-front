@@ -36,7 +36,8 @@ Button.propTypes = {
   theme: PropTypes.oneOf([
     'Primary',
     'Second',
-    'Linear'
+    'Linear',
+    'Red'
   ]).isRequired,
   onClick: PropTypes.func,
   text: PropTypes.string.isRequired,
