@@ -32,7 +32,8 @@ Icon.propTypes = {
     'IconTime',
     'IconFacebook',
     'IconTwitter',
-    'IconMenu'
+    'IconMenu',
+    'IconClose'
   ]).isRequired,
   className: PropTypes.string
 }

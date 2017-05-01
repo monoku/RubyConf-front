@@ -3,6 +3,7 @@
   margin: 40px auto
 .Perfil
   position: relative
+  cursor: pointer
 .Avatar
   width: 250px
   height: 328px
@@ -30,3 +31,84 @@
   font-size: $font-text-big 
   line-height: 1.41
   color: $dark-two
+
+.PhotoModal
+  width: 35%
+  position: absolute
+  left: -5%
+  top: 0
+  +small-only
+    display: none
+.ContentSpeakers
+  margin-left: 30%
+  margin-right: 10%
+  padding: 60px 70px
+  +small-only
+    margin-left: 0%
+    padding: 10px
+     margin-right: 0%
+  & h1
+    font-family: $sourceCode
+    font-size: $font-title-big
+    font-weight: bold
+    letter-spacing: 1.5px
+    color: $white-three
+  & h2
+    font-family: $sourceCode
+    font-size: $font-title-big-mobil
+    font-weight: bold
+    letter-spacing: 1.5px
+    color: $white-three
+  & p
+    width: 469px
+    font-family: $roboto
+    font-size: $font-text-big
+    line-height: 1.59
+    color: $white-three
+    margin: 20px 0px
+    +small-only
+      width: 90%
+
+.ContentDivider
+  width: 320px
+  height: 2px
+  margin: 40px 40px 40px -150px
+  position: relative
+  background-image: linear-gradient(to right, $cobalt-blue, #eb151c 93%)
+  +small-only
+      width: 90%
+.ContainerSponsor
+  margin-left: -110px
+  position: relative
+  z-index: 2
+  width: 680px
+  height: 422px
+  background-image: linear-gradient(to right, $cobalt-blue, #eb151c 93%)
+  +small-only
+    width: 100%
+    margin-left: 0px
+    height: auto
+.ContainerSponsorContent
+  padding: 30px 25px 25px 25%
+  +small-only
+    padding: 10px
+  & p 
+    width: 377.9px
+    +small-only
+      width: 90%
+
+.FooterIcon
+  display: flex
+  padding: 0
+  +small-only
+    flex-direction: row
+    justify-content: center
+    margin-left: 0px
+.FooterItemIcon
+  font-size: $font-title-big-mobil
+  color: $white-three
+  list-style: none
+
+.IconLink
+  color: $white-three
+  text-decoration: none

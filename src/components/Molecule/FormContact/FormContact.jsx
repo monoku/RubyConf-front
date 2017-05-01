@@ -29,6 +29,7 @@ class FormContact extends Component {
   }
 
   async submit(values) {
+    console.log('Form Data', values)
   }
 
   /**
@@ -45,7 +46,7 @@ class FormContact extends Component {
       <form className={Styles.Container} onSubmit={handleSubmit(this.submit)}>
         <div className={Styles.BoxField}>
           <Text className={Styles.TitleField}>Name</Text>
-          <div className={Styles.Divider}/>
+          <div className={Styles.Divider} />
           <Field
             name="correo"
             placeholder="Enter your first name"
@@ -59,7 +60,7 @@ class FormContact extends Component {
         </div>
         <div className={Styles.BoxField}>
           <Text className={Styles.TitleField}>Email</Text>
-          <div className={Styles.Divider}/>
+          <div className={Styles.Divider} />
           <Field
             name="correo"
             placeholder="Enter your email"

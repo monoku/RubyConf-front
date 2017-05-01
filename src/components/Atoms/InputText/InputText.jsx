@@ -41,7 +41,7 @@ class InputText extends Component {
           {...restProps}
           {...input}
         />
-        {IconName && <Icon type={IconName}  className={Styles.Icon} />}
+        {IconName && <Icon type={IconName} className={Styles.Icon} />}
       </div>
     )
   }
@@ -59,7 +59,6 @@ InputText.defaultProps = {
 InputText.propTypes = {
   onChange: PropTypes.func,
   containerStyle: PropTypes.string,
-  isDark: PropTypes.bool,
   IconName: PropTypes.string,
   meta: PropTypes.object,
   type: PropTypes.string,

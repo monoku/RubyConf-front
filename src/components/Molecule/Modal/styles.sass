@@ -1,0 +1,49 @@
+.ModalCloseButton
+  position: absolute
+  right: 20%
+  top: 20px
+  display: inline-block
+  width: 125px
+  +small-only
+    right: 10px
+    top: 10px
+
+  &_btn
+    width: 100%
+
+.ModalContent
+  +small-only
+    margin-top: 40px
+  p
+    margin: 10px 0
+
+  &_text
+    margin: 10px 0
+
+.ModalContentBeforeTitle
+  width: calc(100% - 100px)
+
+.CloseButton
+  font-size: $font-text-small
+  font-weight: 500
+  line-height: 1.57
+  letter-spacing: 1.3px
+  text-align: right
+  color: $white-three 
+  display: flex
+  justify-content: center
+  align-content: center
+  align-items: center
+  cursor: pointer
+.CloseButtonIcon
+  width: 66px
+  height: 66px
+  line-height: 66px
+  margin: auto
+  background-color: rgba(0, 0, 0, 0.34)
+  border: solid 1px #ffffff
+  display: flex
+  justify-content: center
+  align-items: center
+  font-size: $font-title-big-mobil
+

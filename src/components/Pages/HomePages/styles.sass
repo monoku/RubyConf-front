@@ -1,4 +1,5 @@
 @import '../../../sass/_grid.scss'
+@import '~animate.css/animate.min'
 
 .Container
 
@@ -11,6 +12,10 @@
     padding: 100px
     +small-only
       padding: 50px 10%
+  &.padding_150
+    padding: 150px
+    +small-only
+      padding: 75px 10%
   &.padding_200
     padding: 200px
     +small-only
@@ -30,11 +35,20 @@
 .small_12
   @extend .small-12
 
+.animated
+  @extend .animated
+
+.slideInDown
+  @extend .slideInDown
+
 
 .Header
   width: 100%
   height: 100%
   background: url('../../../assets/images/Photos_hero.png') center center no-repeat
+  background-attachment: fixed
+  background-position: center
+  background-repeat: no-repeat
   background-size: cover
   &:before
     content: ''
@@ -48,8 +62,6 @@
     +small-only
       padding: 50px 0px
 .HeaderContent
-  z-index: 2
-  display: block
   position: relative
 .BoxLogo
   text-align: center
@@ -158,7 +170,7 @@
     position: absolute
     top: -2px
     width: 100%
-    z-index: 24
+    z-index: 2
 .Location
   background-color: $white-three
   height: 100px
@@ -218,7 +230,7 @@
   margin-top: 175px
   +small-only
     height: auto
-    padding: 80px 0px;
+    padding: 80px 0px
   & .Divider
     width: 70px
     height: 2px
@@ -270,6 +282,7 @@
 .Contact
   background-image: url('../../../assets/images/Background-medellin.png')
   background-size: cover
+  background-attachment: fixed
   position: relative
   padding-bottom: 100px
   & .row

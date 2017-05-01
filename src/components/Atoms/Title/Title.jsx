@@ -10,8 +10,8 @@ import Styles from './styles.sass'
  */
 const Title = ({ type, children, value, className }) => {
   const classNames = `${Styles[type]} ${className}`
- 
-  if(value  === 'h1'){
+
+  if (value === 'h1') {
     return (
       <h1
         className={classNames}
@@ -19,7 +19,7 @@ const Title = ({ type, children, value, className }) => {
         {children}
       </h1>
     )
-  } else if(value  === 'h2') {
+  } else if (value === 'h2') {
     return (
       <h2
         className={classNames}
@@ -27,7 +27,7 @@ const Title = ({ type, children, value, className }) => {
         {children}
       </h2>
     )
-  } else if(value  === 'h3') {
+  } else if (value === 'h3') {
     return (
       <h3
         className={classNames}
@@ -49,8 +49,9 @@ Title.propTypes = {
     'Medium',
     'Small'
   ]).isRequired,
-  Title: PropTypes.string.isRequired,
-  className: PropTypes.string
+  className: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired
 }
 
 export default Title

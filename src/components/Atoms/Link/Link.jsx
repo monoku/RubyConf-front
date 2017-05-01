@@ -20,7 +20,7 @@ class Link extends Component {
       IconName
     } = this.props
 
-  const classNames = [
+    const classNames = [
       Styles.Link,
       className
     ].join(' ')
@@ -29,7 +29,7 @@ class Link extends Component {
       <div>
         <a className={classNames} href={href} >
           {children}
-        {IconName && <Icon type={IconName}  className={Styles.Icon} />}
+          {IconName && <Icon type={IconName} className={Styles.Icon} />}
         </a>
       </div>
     )

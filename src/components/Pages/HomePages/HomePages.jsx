@@ -3,16 +3,16 @@ import Menu from '../../Molecule/Menu'
 import Footer from '../../Molecule/Footer'
 import CodeRuby from '../../Molecule/CodeRuby'
 import FormContact from '../../Molecule/FormContact'
+import GetTickets from '../../Molecule/GetTickets'
 import Speakers from '../../Organisms/Speakers'
 import Icon from '../../Atoms/Icon'
 import Divider from '../../Atoms/Divider'
+import RubyLogo from '../../Atoms/RubyLogo'
 import Button from '../../Atoms/Button'
 import Title from '../../Atoms/Title'
 import Text from '../../Atoms/Text'
 import Styles from './styles.sass'
 
-import Logo from '../../../assets/images/rubyConfLogo.svg'
-import Ticket from '../../../assets/images/RubyConf_Ticket.png'
 import MapImg from '../../../assets/images/Map.png'
 
 import appsignal from '../../../assets/images/Sponsors/appsignal.png'
@@ -41,14 +41,14 @@ class HomeAppPage extends Component {
   render() {
     return (
       <div className={Styles.Container}>
-        <header className={Styles.Header}>
+        <header className={`${Styles.Header}`}>
           <div className={Styles.HeaderContent} >
             <Menu />
-            <div className={`${Styles.row} ${Styles.padding_100}`}>
-              <div className={`${Styles.small_12} ${Styles.large_6} ${Styles.columns} ${Styles.BoxLogo}`}>
-                <img className={Styles.Logo} src={Logo} alt="RubyConf Logo" />
+            <div className={`${Styles.row} ${Styles.padding_150}`}>
+              <div className={`${Styles.small_12} ${Styles.large_6} ${Styles.columns} ${Styles.BoxLogo} ${Styles.animated} ${Styles.slideInDown}`}>
+                <RubyLogo />
               </div>
-              <div className={`${Styles.small_12} ${Styles.large_6} ${Styles.columns}`}>
+              <div className={`${Styles.small_12} ${Styles.large_6} ${Styles.columns} ${Styles.animated} ${Styles.slideInDown}`}>
                 <p className={Styles.TextDescription}>
                   Be part of RubyConf Colombia 2017. The organizing team is hard at work to make this one of the best Ruby conferences ever.
                 </p>
@@ -63,21 +63,13 @@ class HomeAppPage extends Component {
         </header>
         <main className={Styles.EffectTriangles}>
           <section className={Styles.row}>
-            <div className={`${Styles.small_12} ${Styles.large_6} ${Styles.columns}`}>
-              <Title className={Styles.BlueColor} type="Big">Get the Tickets</Title>
-              <Text className={Styles.DescriptionFirstSection} type="Big">Join us September 8th and 9th, to be a part of the Ruby conference where people from all over the world will come together to share their knowledge and to inspire others.</Text>
-              <Button text="Get tickets now!" theme="Primary" />
-              <CodeRuby />
-            </div>
-            <div className={`${Styles.small_12} ${Styles.large_6} ${Styles.columns}`}>
-              <img className={Styles.Ticket} src={Ticket} alt="Ticket RubyConf" />
-            </div>
+            <GetTickets theme="BlueColor" />
           </section>
           <div className={`${Styles.DividerSection} ${Styles.row}`}>
-            <Divider 
-              basicColor='#c0c0c0'
-              PrimaryColor='#0024A7'
-              SecondColor='#EB151C'
+            <Divider
+              basicColor="#c0c0c0"
+              PrimaryColor="#0024A7"
+              SecondColor="#EB151C"
               name="speakers"
             />
             <Title className={Styles.TextBlue} type="Big">Speakers</Title>
@@ -103,40 +95,31 @@ class HomeAppPage extends Component {
             </div>
           </section>
           <section className={`${Styles.Shedule}`}>
-            <div className={Styles.row}>
-              <div className={`${Styles.small_12} ${Styles.large_6} ${Styles.columns}`}>
-                <Title className={Styles.WhiteColor} type="Big">Get the Tickets</Title>
-                <Text className={`${Styles.DescriptionFirstSection} ${Styles.WhiteColor} `} type="Big">Join us September 8th and 9th, to be a part of the Ruby conference where people from all over the world will come together to share their knowledge and to inspire others.</Text>
-                <Button text="Get tickets now!" theme="Primary" />
-              </div>
-              <div className={`${Styles.small_12} ${Styles.large_6} ${Styles.columns}`}>
-                <img className={Styles.Ticket} src={Ticket} alt="Ticket RubyConf" />
-              </div>
-            </div>
+            <GetTickets theme="WhiteColor" />
             <div className={`${Styles.DividerSection} ${Styles.row}`}>
-              <Divider 
-                basicColor='#FFFFFF'
-                PrimaryColor='#4d4848'
-                SecondColor='#f6f6f6'
+              <Divider
+                basicColor="#FFFFFF"
+                PrimaryColor="#4d4848"
+                SecondColor="#f6f6f6"
                 name="location"
               />
               <Title className={Styles.TextWhite} type="Big">Location</Title>
             </div>
-             <div className={Styles.row}>
+            <div className={Styles.row}>
               <div className={`${Styles.small_12} ${Styles.large_12} ${Styles.columns}`}>
                 <div>
                   <Text className={`${Styles.Bold} ${Styles.Place}`}><Icon type="IconPlace" /> El Teatrico</Text>
                   <Text className={`${Styles.Place} ${Styles.Margin_left_40}`}>Transversal 39B # Circular 2 - 46, Medellín, Antioquia, Colombia</Text>
                 </div>
               </div>
-             </div>
+            </div>
             <div className={`${Styles.Location}`}>
               <div className={Styles.row}>
                 <div className={`${Styles.small_12} ${Styles.large_6} ${Styles.columns}`}>
                   <CodeRuby />
                 </div>
                 <div className={`${Styles.small_12} ${Styles.large_6} ${Styles.columns}`}>
-                  <img className={Styles.MapImg} src={MapImg} alt="RubyConf Location"/>
+                  <img className={Styles.MapImg} src={MapImg} alt="RubyConf Location" />
                 </div>
               </div>
             </div>
@@ -154,10 +137,10 @@ class HomeAppPage extends Component {
           </section>
           <section className={Styles.Sponsors}>
             <div className={`${Styles.DividerSection} ${Styles.row}`}>
-              <Divider 
-                basicColor='#c0c0c0'
-                PrimaryColor='#0024A7'
-                SecondColor='#EB151C'
+              <Divider
+                basicColor="#c0c0c0"
+                PrimaryColor="#0024A7"
+                SecondColor="#EB151C"
                 name="sponsors"
               />
               <Title className={Styles.TextCherry} type="Big">Sponsors</Title>
@@ -165,24 +148,24 @@ class HomeAppPage extends Component {
             <div className={`${Styles.row}`}>
               <Text className={Styles.Title}>Silve</Text>
               <ul className={Styles.ListSponsors}>
-                <li><img src={Cookpad} alt="Cookpad"/></li>
-                <li><img src={koombea} alt="koombea"/></li>
-                <li><img src={getonBoard} alt="getonBoard"/></li>
-                <li><img src={wesura} alt="wesura"/></li>
+                <li><img src={Cookpad} alt="Cookpad" /></li>
+                <li><img src={koombea} alt="koombea" /></li>
+                <li><img src={getonBoard} alt="getonBoard" /></li>
+                <li><img src={wesura} alt="wesura" /></li>
               </ul>
               <Text className={Styles.Title}>Bronze</Text>
               <ul className={Styles.ListSponsors}>
-                <li><img src={pdfbucket} alt="pdfbucket"/></li>
-                <li><img src={micro} alt="micro"/></li>
-                <li><img src={makeitreal} alt="micro"/></li>
+                <li><img src={pdfbucket} alt="pdfbucket" /></li>
+                <li><img src={micro} alt="micro" /></li>
+                <li><img src={makeitreal} alt="micro" /></li>
               </ul>
               <Text className={Styles.Title}>Supporters</Text>
               <ul className={Styles.ListSponsors}>
-                <li><img src={appsignal} alt="appsignal"/></li>
-                <li><img src={codeschool} alt="codeschool"/></li>
-                <li><img src={digitalocean} alt="digitalocean"/></li>
-                <li><img src={shopify} alt="shopify"/></li>
-                <li><img src={worldtech} alt="worldtech"/></li>
+                <li><img src={appsignal} alt="appsignal" /></li>
+                <li><img src={codeschool} alt="codeschool" /></li>
+                <li><img src={digitalocean} alt="digitalocean" /></li>
+                <li><img src={shopify} alt="shopify" /></li>
+                <li><img src={worldtech} alt="worldtech" /></li>
               </ul>
             </div>
           </section>

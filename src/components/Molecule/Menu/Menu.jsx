@@ -12,8 +12,26 @@ class Menu extends Component {
       menuIsOpen: false
     }
     this.toggleMenu = this.toggleMenu.bind(this)
+    this.animateComponentEvent = this.animateComponentEvent.bind(this)
   }
 
+  componentDidMount() {
+    this.animateComponentEvent()
+  }
+
+  animateComponentEvent() {
+     window.addEventListener('scroll', () => {
+       const main = document.getElementsByTagName('main')
+       const menu = document.getElementById('menu')
+       const topMain = main[0].getBoundingClientRect().top
+       if(topMain < 0){
+         menu.classList.add(Styles.Active)
+       }else {
+          menu.classList.remove(Styles.Active)
+       }
+     })
+  }
+  
   toggleMenu() {
     this.setState({
       menuIsOpen: !this.state.menuIsOpen
@@ -22,13 +40,13 @@ class Menu extends Component {
 
   render() {
     const menuIsOpen = this.state.menuIsOpen
-    if(menuIsOpen){
+    if (menuIsOpen) {
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = 'auto'
     }
     return (
-      <div className={Styles.Container}>
+      <div id="menu" className={Styles.Container}>
         <div className={`${Styles.Left} ${menuIsOpen ? Styles.active : ''}`}>
           <a onClick={this.toggleMenu} className={Styles.Close}>Close X</a>
           <a>

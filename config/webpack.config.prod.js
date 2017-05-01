@@ -108,8 +108,10 @@ module.exports = {
       {
         exclude: [
           /\.html$/,
-          /\.(js|jsx)$/,
+          /\.(js|jsx)(\?.*)?$/,
           /\.css$/,
+          /\.sass$/,
+          /\.scss$/,
           /\.json$/,
           /\.svg$/
         ],
@@ -200,18 +202,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: true,
       template: paths.appHtml,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: false,
-        useShortDoctype: true,
-        removeEmptyAttributes: false,
-        removeStyleLinkTypeAttributes: false,
-        keepClosingSlash: true,
-        minifyJS: false,
-        minifyCSS: false,
-        minifyURLs: false
-      }
     }),
     // Makes some environment variables available to the JS code, for example:
     // if (process.env.NODE_ENV === 'production') { ... }. See `./env.js`.

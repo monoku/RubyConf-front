@@ -29,14 +29,14 @@ class Footer extends Component {
           </div>
           <div>
             <ul className={Styles.FooterIcon}>
-             <li  className={Styles.FooterItemIcon}><a className={Styles.IconLink} href="http://monoku.com" target="_black"><Icon type="IconFacebook" /></a></li>
-             <li  className={Styles.FooterItemIcon}><a className={Styles.IconLink} href="http://monoku.com" target="_black"><Icon  type="IconTwitter" /></a></li>
+              <li className={Styles.FooterItemIcon}><a className={Styles.IconLink} href="http://monoku.com" target="_black"><Icon type="IconFacebook" /></a></li>
+              <li className={Styles.FooterItemIcon}><a className={Styles.IconLink} href="http://monoku.com" target="_black"><Icon type="IconTwitter" /></a></li>
             </ul>
           </div>
         </div>
         <div className={Styles.Right}>
           <Text className={Styles.Texto}>Made by</Text>
-          <a className={Styles.Imagen} href="http://monoku.com" target="_black"><img src={LogoMonoku} alt="Monoku"/></a>
+          <a className={Styles.Imagen} href="http://monoku.com" target="_black"><img src={LogoMonoku} alt="Monoku" /></a>
         </div>
       </div>
     )
