@@ -6,6 +6,7 @@
     "animate.css": "^3.5.2",
     "axios": "^0.16.1",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "contentful": "^4.3.0",
     "history": "^4.6.1",
     "normalize.css": "^6.0.0",
     "react": "^15.5.4",

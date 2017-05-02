@@ -43,6 +43,7 @@
 
 
 .Header
+  position: relative
   width: 100%
   height: 100%
   background: url('../../../assets/images/Photos_hero.png') center center no-repeat
@@ -63,6 +64,13 @@
       padding: 50px 0px
 .HeaderContent
   position: relative
+.HeaderEffectTri 
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  width: 100%
 .BoxLogo
   text-align: center
 .Logo
@@ -316,3 +324,26 @@
     margin-bottom: 0px
     +small-only
       width: 100%
+
+.triangleFadein
+  animation: triangleFadein .3s 1
+  fill: #F9F9F9
+
+.triangleFadeout
+  animation: triangleFadeout .3s 1
+  fill: transparent
+
+@keyframes triangleFadein
+  0%
+    fill: transparent
+    width: 0%
+  100%
+    fill: #F9F9F9
+    width: 100%
+
+
+@keyframes triangleFadeout
+  0%
+    fill: #F9F9F9
+  100%
+   fill: transparent
