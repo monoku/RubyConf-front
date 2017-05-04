@@ -2,11 +2,10 @@ machine:
   timezone:
     America/New_York
 dependencies:
-  commands:
-    - npm install yarn
-    - yarn install
+  override:
+    - yarn
 test:
-  commands:
+  override:
     - yarn test
 deployment:
   master:
