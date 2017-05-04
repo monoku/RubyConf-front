@@ -4,6 +4,7 @@ machine:
 dependencies:
   commands:
     - npm install yarn
+    - yarn install
 test:
   commands:
     - yarn test
