@@ -18,8 +18,8 @@ const  App = () => (
           <Route exact path="/" component={HomePage} />
           <Route exact path="/news/" component={News} />
           <Route path="/news/:blog" component={NewsInside} />
-          <Route path="/:slug" component={ContentPages} />
           <Route exact path="/error/404" component={Error404} />
+          <Route path="/:slug" component={ContentPages} />
           <Redirect to="error/404" />
         </Switch>
       </div>

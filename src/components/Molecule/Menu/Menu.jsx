@@ -16,6 +16,7 @@ class Menu extends Component {
     this.toggleMenu = this.toggleMenu.bind(this)
     this.animateComponentEvent = this.animateComponentEvent.bind(this)
     this.goToByScroll = this.goToByScroll.bind(this)
+    this.getTicket = this.getTicket.bind(this)
   }
 
   componentDidMount() {
@@ -55,6 +56,10 @@ class Menu extends Component {
       }, 100)
     }
   }
+  getTicket() {
+    var win = window.open('https://ti.to/colombia-dev/rubyconf-colombia-2017/', '_blank')  
+    win.focus()
+  }
 
   render() {
     const menuIsOpen = this.state.menuIsOpen
@@ -67,8 +72,8 @@ class Menu extends Component {
       <div id="menu" className={Styles.Container}>
         <div className={`${Styles.Left} ${menuIsOpen ? Styles.active : ''}`}>
           <a onClick={this.toggleMenu} className={Styles.Close}>Close X</a>
-          <a>
-            <Icon type="IconRubyConf" className={Styles.Logo} />
+          <a className={Styles.Logo} href="/">
+            <Icon type="IconRubyConf" />
           </a>
           <nav>
             <ul className={Styles.Menu}>
@@ -82,7 +87,7 @@ class Menu extends Component {
           </nav>
         </div>
         <div className={Styles.Right}>
-          <Button text="Get Ticket" theme="Red" />
+          <Button text="Get Ticket" theme="Red" onClick={this.getTicket} />
         </div>
         <div onClick={this.toggleMenu} className={Styles.ContainerMobil}>
           <Icon className={Styles.Icon} type="IconMenu" />

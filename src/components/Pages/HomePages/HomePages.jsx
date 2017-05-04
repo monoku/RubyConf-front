@@ -26,6 +26,7 @@ class HomeAppPage extends Component {
       loading: true
     }
     this.animateComponentEvent = this.animateComponentEvent.bind(this)
+    this.getCodeOfConduct = this.getCodeOfConduct.bind(this)
     this.initFetch = this.initFetch.bind(this)
     this.previousScroll = 0
     this.lastTringle = 0
@@ -122,6 +123,10 @@ class HomeAppPage extends Component {
       }
       this.previousScroll = currentScroll
     }, { passive: true })
+  }
+  getCodeOfConduct() {
+    var win = window.open('https://github.com/RubyConfCo/code-of-conduct/blob/master/README.md', '_blank')  
+    win.focus()
   }
 
   render() {
@@ -229,7 +234,7 @@ class HomeAppPage extends Component {
               }
           </section>
           <section id="schedule" className={`${Styles.Shedule}`}>
-            <div id="place" className={`${Styles.DividerSection} ${Styles.row}`}>
+            <div className={`${Styles.DividerSection} ${Styles.row}`}>
               <Divider
                 basicColor="#FFFFFF"
                 PrimaryColor="#4d4848"
@@ -275,7 +280,7 @@ class HomeAppPage extends Component {
                 <div className={Styles.Divider} />
                 <Text className={Styles.Description}>We dedicate ourselves to making everyone feel welcome and at home, both during the conference and events.</Text>
                 <Text className={Styles.Description}>Our Code of Conduct offers some guidelines to ensure this for both attendees and speakers.</Text>
-                <Button className={Styles.Button} text="Code of conduct" theme="Red" />
+                <Button  onClick={this.getCodeOfConduct} className={Styles.Button} text="Code of conduct" theme="Red" />
               </div>
             </div>
           </section>
