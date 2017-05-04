@@ -28,7 +28,7 @@ class InputText extends Component {
 
     const StyleContainer = `${Styles.Container} ${containerStyle}`
 
-    const StyleImput = `${Styles.Input} ${meta.touched && meta.error ? Styles.InputError : ''}`
+    const StyleImput = `${Styles.Input}`
 
     return (
       <div className={StyleContainer}>
@@ -48,7 +48,6 @@ class InputText extends Component {
 }
 
 InputText.defaultProps = {
-  onChange: () => {},
   containerStyle: '',
   type: 'text',
   input: {},
@@ -57,7 +56,6 @@ InputText.defaultProps = {
 }
 
 InputText.propTypes = {
-  onChange: PropTypes.func,
   containerStyle: PropTypes.string,
   IconName: PropTypes.string,
   meta: PropTypes.object,

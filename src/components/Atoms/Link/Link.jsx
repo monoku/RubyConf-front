@@ -16,7 +16,7 @@ class Link extends Component {
     const {
       children,
       className,
-      href,
+      onClick,
       IconName
     } = this.props
 
@@ -27,10 +27,10 @@ class Link extends Component {
 
     return (
       <div>
-        <a className={classNames} href={href} >
+        <p onClick={()=> onClick()} className={classNames} >
           {children}
           {IconName && <Icon type={IconName} className={Styles.Icon} />}
-        </a>
+        </p>
       </div>
     )
   }
@@ -39,15 +39,13 @@ class Link extends Component {
 Link.defaultProps = {
   children: '',
   className: '',
-  IconName: '',
-  href: ''
+  IconName: ''
 }
 
 Link.propTypes = {
   children: PropTypes.string,
   className: PropTypes.string,
-  IconName: PropTypes.string,
-  href: PropTypes.string
+  IconName: PropTypes.string
 }
 
 export default Link

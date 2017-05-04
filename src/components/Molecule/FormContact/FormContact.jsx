@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { reduxForm } from 'redux-form'
 import Styles from './styles.sass'
 
 import InputText from '../../Atoms/InputText'
@@ -25,46 +25,33 @@ class FormContact extends Component {
     this.state = {
       loginBtn: false
     }
-    this.submit = this.submit.bind(this)
   }
-
-  async submit(values) {
-    console.log('Form Data', values)
-  }
-
   /**
    * render
    * @return {ReactElement} markup
    */
 
   render() {
-    const {
-      handleSubmit
-    } = this.props
-
     return (
-      <form className={Styles.Container} onSubmit={handleSubmit(this.submit)}>
+      <form className={Styles.Container} action="//rubyconf.us11.list-manage.com/subscribe/post?u=7b7c2e5ead7427750ced71f09&amp;id=e7b035683b" encType="multipart/form-data" method="post" name="mc-embedded-subscribe-form" target="_blank">
         <div className={Styles.BoxField}>
           <Text className={Styles.TitleField}>Name</Text>
           <div className={Styles.Divider} />
-          <Field
-            name="correo"
+          <InputText
+            name="FNAME"
             placeholder="Enter your first name"
-            component={InputText}
           />
-          <Field
-            name="correo"
+          <InputText
+            name="LNAME"
             placeholder="Enter your last name"
-            component={InputText}
           />
         </div>
         <div className={Styles.BoxField}>
           <Text className={Styles.TitleField}>Email</Text>
           <div className={Styles.Divider} />
-          <Field
-            name="correo"
+          <InputText
+            name="EMAIL"
             placeholder="Enter your email"
-            component={InputText}
           />
         </div>
         <Button
@@ -80,18 +67,16 @@ class FormContact extends Component {
 }
 
 FormContact.defaultProps = {
-  handleSubmit: () => {},
-  history: {}
+  handleSubmit: () => {}
 }
 
 FormContact.propTypes = {
-  handleSubmit: PropTypes.func,
-  history: PropTypes.object
+  handleSubmit: PropTypes.func
 }
 
 
 const FormLoginRedux = reduxForm({
-  form: 'LoginForm'
+  form: 'subscribe-form'
 })(FormContact)
 
 export default FormLoginRedux

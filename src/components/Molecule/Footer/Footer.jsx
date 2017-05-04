@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router'
+import $ from "jquery"
 import Icon from '../../Atoms/Icon'
 import Text from '../../Atoms/Text'
 import Styles from './styles.sass'
@@ -12,6 +14,14 @@ class Footer extends Component {
     this.state = {
       loading: true
     }
+    this.goToPage = this.goToPage.bind(this)
+
+  }
+  goToPage(page) {
+    $('html,body').animate(
+      { scrollTop: 0
+    }, 'slow')
+    this.props.history.push(`/${page}`)
   }
 
   render() {
@@ -20,17 +30,17 @@ class Footer extends Component {
         <div className={Styles.Left}>
           <div>
             <ul className={Styles.Footer}>
-              <li className={Styles.FooterItem}>About</li>
+              <li className={Styles.FooterItem} onClick={()=> this.goToPage('about-us')}>About</li>
               <li className={Styles.FooterItem}>Contact</li>
-              <li className={Styles.FooterItem}>Code of conduct</li>
-              <li className={Styles.FooterItem}>News</li>
-              <li className={Styles.FooterItem}>FAQ</li>
+              <li className={Styles.FooterItem}><a href="https://github.com/RubyConfCo/code-of-conduct/blob/master/README.md" target="_black">Code of conduct </a></li>
+              <li className={Styles.FooterItem} onClick={()=> this.goToPage('news')}>News</li>
+              <li className={Styles.FooterItem} onClick={()=> this.goToPage('faq')}>FAQ</li>
             </ul>
           </div>
           <div>
             <ul className={Styles.FooterIcon}>
-              <li className={Styles.FooterItemIcon}><a className={Styles.IconLink} href="http://monoku.com" target="_black"><Icon type="IconFacebook" /></a></li>
-              <li className={Styles.FooterItemIcon}><a className={Styles.IconLink} href="http://monoku.com" target="_black"><Icon type="IconTwitter" /></a></li>
+              <li className={Styles.FooterItemIcon}><a className={Styles.IconLink} href="https://www.facebook.com/RubyConfCo" target="_black"><Icon type="IconFacebook" /></a></li>
+              <li className={Styles.FooterItemIcon}><a className={Styles.IconLink} href="https://twitter.com/RubyConfCo" target="_black"><Icon type="IconTwitter" /></a></li>
             </ul>
           </div>
         </div>
@@ -43,4 +53,4 @@ class Footer extends Component {
   }
 }
 
-export default Footer
+export default withRouter(Footer)

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import moment from 'moment'
+import showdown from 'showdown'
 import Menu from '../../Molecule/Menu'
 import Footer from '../../Molecule/Footer'
 import GetTickets from '../../Molecule/GetTickets'
@@ -7,15 +7,15 @@ import Styles from './styles.sass'
 
 import api from '../../../services/api'
 
-class News extends Component {
+class ContentPages extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      loading: true,
-      news: []
+      loading: false,
+      contetPage: {} 
     }
-  this.initFetch = this.initFetch.bind(this)
+    this.initFetch = this.initFetch.bind(this)
   }
 
   componentDidMount() {
@@ -24,53 +24,39 @@ class News extends Component {
 
   async initFetch() {
     try {
-      const pagesData = await api.news.contentPages()
-
-      let news = pagesData.items.map((items ) => {
-        return items.fields
-      })
-
+      const pagesData = await api.pagesData.contentPages(this.props.match.params.slug)
+      if(pagesData.items.length <= 0){
+        this.props.history.push('/error/404')
+      }
       this.setState({
-        news: news,
+        contetPage: pagesData.items[0].fields,
         loading: true
       })
 
-      console.log(news)
     } catch (error) {
       console.log(error)
     }
   }
 
   render() {
-    moment.locale()
+    const contetPage = this.state.contetPage
+    const converter = new showdown.Converter()
+    function contentPageHtml() {
+      return {__html: converter.makeHtml(contetPage.content)}
+    }
     return (
       <div className={Styles.Container}>
         <header className={`${Styles.Header}`}>
           <div className={Styles.HeaderContent} >
             <Menu />
             <div className={`${Styles.row}`}>
-             <h1>News</h1>
+             <h1>{contetPage.name}</h1>
             </div>
           </div>
         </header>
         <main className={Styles.ContentPages}>
           <section className={`${Styles.row}`}>
-            <div  className={`${Styles.Section}`}>
-              <ul>
-                {
-                  this.state.news.map((item)=>{
-                    return (
-                      <li>
-                        <span>{moment(item.date).format('LL')}</span>
-                        <h5>
-                          <a href={`/news/${item.slug}`}>{item.title}</a>
-                        </h5>
-                      </li>
-                    )
-                  })
-                }
-              </ul>
-            </div>
+            <div  className={`${Styles.Section}`} dangerouslySetInnerHTML={contentPageHtml()} />
           </section>
           <GetTickets theme="BlueColor" />
         </main>
@@ -80,4 +66,4 @@ class News extends Component {
   }
 }
 
-export default News
+export default ContentPages

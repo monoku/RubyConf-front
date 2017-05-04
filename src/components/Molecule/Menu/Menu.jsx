@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import $ from "jquery"
+import { withRouter } from 'react-router'
 import Icon from '../../Atoms/Icon'
 import Button from '../../Atoms/Button'
 import Styles from './styles.sass'
@@ -13,6 +15,7 @@ class Menu extends Component {
     }
     this.toggleMenu = this.toggleMenu.bind(this)
     this.animateComponentEvent = this.animateComponentEvent.bind(this)
+    this.goToByScroll = this.goToByScroll.bind(this)
   }
 
   componentDidMount() {
@@ -37,6 +40,21 @@ class Menu extends Component {
       menuIsOpen: !this.state.menuIsOpen
     })
   }
+  goToByScroll(id) {
+    if(location.pathname === '/') {
+      id = id.replace("link", "")
+      $('html,body').animate(
+        { scrollTop: $("#"+id).offset().top - 120
+      }, 'slow')
+    } else {
+      this.props.history.push('/')
+      setTimeout(()=> {
+        $('html,body').animate(
+          { scrollTop: $("#"+id).offset().top - 120
+        }, 'slow')
+      }, 100)
+    }
+  }
 
   render() {
     const menuIsOpen = this.state.menuIsOpen
@@ -54,12 +72,12 @@ class Menu extends Component {
           </a>
           <nav>
             <ul className={Styles.Menu}>
-              <li className={Styles.MenuItem}>Speakers</li>
-              <li className={Styles.MenuItem}>Schedule</li>
-              <li className={Styles.MenuItem}>Place</li>
-              <li className={Styles.MenuItem}>Conduct</li>
-              <li className={Styles.MenuItem}>Sponsors</li>
-              <li className={Styles.MenuItem}>Mailing list</li>
+              <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('speakers')} >Speakers</a></li>
+              <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('schedule')}>Schedule</a></li>
+              <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('place')}>Place</a></li>
+              <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('conduct')}>Conduct</a></li>
+              <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('sponsors')}>Sponsors</a></li>
+              <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('mailing')}>Mailing list</a></li>
             </ul>
           </nav>
         </div>
@@ -74,4 +92,4 @@ class Menu extends Component {
   }
 }
 
-export default Menu
+export default withRouter(Menu)

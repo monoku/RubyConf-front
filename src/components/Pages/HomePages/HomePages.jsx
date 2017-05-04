@@ -4,6 +4,7 @@ import Footer from '../../Molecule/Footer'
 import CodeRuby from '../../Molecule/CodeRuby'
 import FormContact from '../../Molecule/FormContact'
 import GetTickets from '../../Molecule/GetTickets'
+import Schedule from '../../Molecule/Schedule'
 import Speakers from '../../Organisms/Speakers'
 import Icon from '../../Atoms/Icon'
 import Divider from '../../Atoms/Divider'
@@ -15,19 +16,7 @@ import Styles from './styles.sass'
 
 import MapImg from '../../../assets/images/Map.png'
 
-import appsignal from '../../../assets/images/Sponsors/appsignal.png'
-import codeschool from '../../../assets/images/Sponsors/codeschool.png'
-import Cookpad from '../../../assets/images/Sponsors/Cookpad.png'
-import digitalocean from '../../../assets/images/Sponsors/digitalocean.png'
-import getonBoard from '../../../assets/images/Sponsors/getonBoard.png'
-import koombea from '../../../assets/images/Sponsors/koombea.png'
-import makeitreal from '../../../assets/images/Sponsors/makeitreal.png'
-import micro from '../../../assets/images/Sponsors/micro.png'
-import pdfbucket from '../../../assets/images/Sponsors/pdfbucket.png'
-import shopify from '../../../assets/images/Sponsors/shopify.png'
-import wesura from '../../../assets/images/Sponsors/wesura.png'
-import worldtech from '../../../assets/images/Sponsors/worldtech.png'
-
+import api from '../../../services/api'
 
 class HomeAppPage extends Component {
 
@@ -37,12 +26,65 @@ class HomeAppPage extends Component {
       loading: true
     }
     this.animateComponentEvent = this.animateComponentEvent.bind(this)
+    this.initFetch = this.initFetch.bind(this)
     this.previousScroll = 0
     this.lastTringle = 0
   }
 
   componentDidMount() {
     this.animateComponentEvent()
+    this.initFetch()
+  }
+
+  async initFetch() {
+    try {
+      const speakersData = await api.homePages.speakers()
+      let speakers = speakersData.items.map((items) => {
+        let speakers = {}
+        speakers.name = items.fields.name
+        speakers.description = items.fields.description
+        speakers.descriptionEs = items.fields.descriptionEs
+        speakers.image = items.fields.image.fields.file.url
+        speakers.imageHover = typeof items.fields.imageHover !== 'undefined' 
+            ? items.fields.imageHover.fields.file.url 
+            : ''
+        return speakers
+      })
+
+      this.props.saveSpeakers(speakers)
+      const sponsorData = await api.homePages.sponsor()
+
+      let sponsors = sponsorData.items.reduce((valorAnterior , valorActual ) => {
+        if(valorActual.fields.level === 'supporters'){
+          valorAnterior.supporters.push({
+            level: valorActual.fields.level,
+            logo: valorActual.fields.logo.fields.file.url,
+            name: valorActual.fields.name
+          })
+        } else if(valorActual.fields.level === 'bronze'){
+          valorAnterior.bronze.push({
+            level: valorActual.fields.level,
+            logo: valorActual.fields.logo.fields.file.url,
+            name: valorActual.fields.name
+          })
+        } else if(valorActual.fields.level === 'silver'){
+          valorAnterior.silver.push({
+            level: valorActual.fields.level,
+            logo: valorActual.fields.logo.fields.file.url,
+            name: valorActual.fields.name
+          })
+        }
+        return valorAnterior
+      }, { supporters: [], bronze: [], silver: [] })
+
+      this.props.saveSponsor(sponsors)
+
+      this.setState({
+        loading: false
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   animateComponentEvent() {
@@ -55,7 +97,7 @@ class HomeAppPage extends Component {
       const topMain = main.getBoundingClientRect()
       const scroolTriangle = header / sgv.childElementCount
       const diferen = header - topMain.top
-      let showTriangle = parseInt(diferen / scroolTriangle)
+      let showTriangle = parseInt(diferen / scroolTriangle, 10)
       
       if(showTriangle > sgv.childElementCount){
         showTriangle = sgv.childElementCount
@@ -83,6 +125,15 @@ class HomeAppPage extends Component {
   }
 
   render() {
+    const {
+      sponsors,
+      speakers
+    } = this.props
+
+    if(this.state.loading){
+      return <p>Loader</p>
+    }
+    
     return (
       <div className={Styles.Container}>
         <header className={`${Styles.Header}`}>
@@ -157,6 +208,9 @@ class HomeAppPage extends Component {
         <main className={Styles.EffectTriangles}>
           <section className={Styles.row}>
             <GetTickets theme="BlueColor" />
+            <div className={`${Styles.small_12} ${Styles.large_6} ${Styles.columns}`}>
+              <CodeRuby />
+            </div>
           </section>
           <div className={`${Styles.DividerSection} ${Styles.row}`}>
             <Divider
@@ -167,29 +221,26 @@ class HomeAppPage extends Component {
             />
             <Title className={Styles.TextBlue} type="Big">Speakers</Title>
           </div>
-          <section className={Styles.row}>
-            <div className={`${Styles.small_12} ${Styles.large_4} ${Styles.columns}`}>
-              <Speakers />
-            </div>
-            <div className={`${Styles.small_12} ${Styles.large_4} ${Styles.columns}`}>
-              <Speakers />
-            </div>
-            <div className={`${Styles.small_12} ${Styles.large_4} ${Styles.columns}`}>
-              <Speakers />
-            </div>
-            <div className={`${Styles.small_12} ${Styles.large_4} ${Styles.columns}`}>
-              <Speakers />
-            </div>
-            <div className={`${Styles.small_12} ${Styles.large_4} ${Styles.columns}`}>
-              <Speakers />
-            </div>
-            <div className={`${Styles.small_12} ${Styles.large_4} ${Styles.columns}`}>
-              <Speakers />
-            </div>
+          <section id="speakers" className={Styles.row}>
+              {
+                speakers.map((item) => {
+                  return <Speakers perfil={item}  />
+                })
+              }
           </section>
-          <section className={`${Styles.Shedule}`}>
+          <section id="schedule" className={`${Styles.Shedule}`}>
+            <div id="place" className={`${Styles.DividerSection} ${Styles.row}`}>
+              <Divider
+                basicColor="#FFFFFF"
+                PrimaryColor="#4d4848"
+                SecondColor="#f6f6f6"
+                name="schedule"
+              />
+              <Title className={Styles.TextWhite} type="Big">Schedule</Title>
+            </div>
+            <Schedule />
             <GetTickets theme="WhiteColor" />
-            <div className={`${Styles.DividerSection} ${Styles.row}`}>
+            <div id="place" className={`${Styles.DividerSection} ${Styles.row}`}>
               <Divider
                 basicColor="#FFFFFF"
                 PrimaryColor="#4d4848"
@@ -217,7 +268,7 @@ class HomeAppPage extends Component {
               </div>
             </div>
           </section>
-          <section className={Styles.CodeConduc}>
+          <section id="conduct" className={Styles.CodeConduc}>
             <div className={`${Styles.row} ${Styles.padding_100}`}>
               <div className={`${Styles.small_12} ${Styles.large_12} ${Styles.columns}`}>
                 <Title className={Styles.Title} type="Big">Code of conduct</Title>
@@ -228,7 +279,7 @@ class HomeAppPage extends Component {
               </div>
             </div>
           </section>
-          <section className={Styles.Sponsors}>
+          <section id="sponsors" className={Styles.Sponsors}>
             <div className={`${Styles.DividerSection} ${Styles.row}`}>
               <Divider
                 basicColor="#c0c0c0"
@@ -239,32 +290,35 @@ class HomeAppPage extends Component {
               <Title className={Styles.TextCherry} type="Big">Sponsors</Title>
             </div>
             <div className={`${Styles.row}`}>
-              <Text className={Styles.Title}>Silve</Text>
+              <Text className={Styles.Title}>Silver</Text>
               <ul className={Styles.ListSponsors}>
-                <li><img src={Cookpad} alt="Cookpad" /></li>
-                <li><img src={koombea} alt="koombea" /></li>
-                <li><img src={getonBoard} alt="getonBoard" /></li>
-                <li><img src={wesura} alt="wesura" /></li>
+                {
+                  sponsors.silver.map((item) => {
+                    return <li><img src={item.logo} alt={item.name} /></li>
+                  })
+                }
               </ul>
               <Text className={Styles.Title}>Bronze</Text>
               <ul className={Styles.ListSponsors}>
-                <li><img src={pdfbucket} alt="pdfbucket" /></li>
-                <li><img src={micro} alt="micro" /></li>
-                <li><img src={makeitreal} alt="micro" /></li>
+                {
+                  sponsors.bronze.map((item) => {
+                    return <li><img src={item.logo} alt={item.name} /></li>
+                  })
+                }
               </ul>
               <Text className={Styles.Title}>Supporters</Text>
               <ul className={Styles.ListSponsors}>
-                <li><img src={appsignal} alt="appsignal" /></li>
-                <li><img src={codeschool} alt="codeschool" /></li>
-                <li><img src={digitalocean} alt="digitalocean" /></li>
-                <li><img src={shopify} alt="shopify" /></li>
-                <li><img src={worldtech} alt="worldtech" /></li>
+                 {
+                  sponsors.supporters.map((item) => {
+                    return <li><img src={item.logo} alt={item.name} /></li>
+                  })
+                }
               </ul>
             </div>
           </section>
           <section className={Styles.Contact}>
             <div className={`${Styles.row} ${Styles.padding_100}`}>
-              <div className={`${Styles.small_12} ${Styles.large_12} ${Styles.columns}`}>
+              <div id="mailing" className={`${Styles.small_12} ${Styles.large_12} ${Styles.columns}`}>
                 <Title className={Styles.Title} type="Big">Join to our mailing list</Title>
                 <Text className={Styles.Description}>Get the latest news about RubyConf Colombia, subscribing to our mailing list.</Text>
               </div>

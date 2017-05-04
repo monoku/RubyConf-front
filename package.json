@@ -8,6 +8,8 @@
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "contentful": "^4.3.0",
     "history": "^4.6.1",
+    "jquery": "^3.2.1",
+    "moment": "^2.18.1",
     "normalize.css": "^6.0.0",
     "react": "^15.5.4",
     "react-animations": "^0.1.0",
@@ -26,6 +28,7 @@
     "redux-storage-engine-localstorage": "^1.1.4",
     "redux-thunk": "^2.2.0",
     "sass-resources-loader": "^1.2.1",
+    "showdown": "^1.6.4",
     "style-it": "^1.6.7"
   },
   "devDependencies": {

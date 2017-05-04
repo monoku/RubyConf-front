@@ -58,11 +58,23 @@
 .HeaderContent
   position: relative
   & h1
-  font-family: $sourceCode
-  font-size: $font-title-big-mobil
-  font-weight: bold
-  letter-spacing: 1.5px
-  color: $white-three
+    font-family: $sourceCode
+    font-size: $font-title-big
+    font-weight: bold
+    letter-spacing: 1.5px
+    color: $white-three
+    margin: 10px 0px 
+    padding-top: 50px
+.HeaderTitle
+  display: flex
+  flex-wrap: wrap
+  flex-direction: column
+  & p 
+    font-size: $font-text-small
+    font-weight: bold
+    font-family: $sourceCode
+    letter-spacing: 1.5px
+    color: $white-three
 .Section
   width: 670px
   +small-only

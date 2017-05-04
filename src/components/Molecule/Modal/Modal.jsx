@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react'
 import Modal from 'react-modal'
-
-import Button from '../../Atoms/Button'
 import Icon from '../../Atoms/Icon'
 
 import Styles from './styles.sass'

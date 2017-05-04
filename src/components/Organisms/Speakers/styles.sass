@@ -1,3 +1,36 @@
+@import '../../../sass/_grid.scss'
+.row
+  @extend .row
+  padding: 50px 0px
+  +small-only
+    padding: 50px 10%
+  &.padding_100
+    padding: 100px
+    +small-only
+      padding: 50px 10%
+  &.padding_150
+    padding: 150px
+    +small-only
+      padding: 75px 10%
+  &.padding_200
+    padding: 200px
+    +small-only
+      padding: 100px 10%
+.columns
+  @extend .columns
+
+.large_4
+  @extend .large-4
+  
+.large_6
+  @extend .large-6
+
+.large_12
+  @extend .large-12
+
+.small_12
+  @extend .small-12
+
 .Container
   width: 80%
   margin: 40px auto
@@ -31,6 +64,9 @@
   font-size: $font-text-big 
   line-height: 1.41
   color: $dark-two
+  width: 250px
+  +small-only
+    width: 100%
 
 .PhotoModal
   width: 35%

@@ -1,49 +1,63 @@
 import React, { Component } from 'react'
+import showdown from 'showdown'
 import Menu from '../../Molecule/Menu'
 import Footer from '../../Molecule/Footer'
 import GetTickets from '../../Molecule/GetTickets'
 import Styles from './styles.sass'
 
+import api from '../../../services/api'
 
 class NewsInside extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      loading: true
+      loading: true,
+      news: []
+    }
+  this.initFetch = this.initFetch.bind(this)
+  }
+
+  componentDidMount() {
+    this.initFetch()
+  }
+
+  async initFetch() {
+    try {
+      const pagesData = await api.news.contentPagesSlug(this.props.match.params.blog)
+      if(pagesData.items.length <= 0){
+        this.props.history.push('/error/404')
+      }
+      this.setState({
+        news: pagesData.items[0].fields,
+        loading: true
+      })
+    } catch (error) {
+      console.log(error)
     }
   }
 
   render() {
+    const news = this.state.news
+    const converter = new showdown.Converter()
+    function contentPageHtml() {
+      return {__html: converter.makeHtml(news.content)}
+    }
     return (
       <div className={Styles.Container}>
         <header className={`${Styles.Header}`}>
           <div className={Styles.HeaderContent} >
             <Menu />
             <div className={`${Styles.row} ${Styles.HeaderTitle}`}>
-              <p>&lsaquo; News</p>
-              <h1>Meet Jessica Rudder</h1>
+              <p><a href="/news">&lsaquo; News</a></p>
+              <h1>{this.state.news.title}</h1>
             </div>
           </div>
         </header>
         <main className={Styles.ContentPages}>
           <section className={`${Styles.row}`}>
             <div  className={`${Styles.Section}`}>
-              <article>
-                <p>
-                <img src="http://2016.rubyconf.co/img/speakers/jessica.jpg" alt="Jessica Rudder" />
-                </p>
-                <p>Jessica wanted to be a programmer when she was only 8, she spent hours in the green glow of the monitor learning BASIC.
-                Some time later she detoured into digital marketing being a respected leader with over 8 years of experience in this area.
-                Jessica is now a developer for <a href="https://flatironschool.com">Flatiron School</a> - happily spending her days writing code that helps other people learn to code too.</p>
-                <p>You can follow Jessica on <a href="https://twitter.com/jessrudder">Twitter</a> and <a href="https://github.com/jessrudder">GitHub</a></p>
-                <hr />
-                <h2 id="te-presentamos-a-jessica-rudder">Te presentamos a Jessica Rudder</h2>
-                <p>Jessica decidió ser programadora cuando solo tenia 8 años, ella invirtió horas en el resplandor verde del monitor aprendiendo BASIC.
-                Algún tiempo después ella se fue por el camino del Marketing Digital siendo una respetada líder con acerca de 8 años de experiencia en esta área.
-                Actualmente trabaja como desarrolladora para <a href="https://flatironschool.com">Flatiron School</a> - donde es feliz dedicando sus días a escribir código que ayuda a otras personas a aprendera escribir código.</p>
-                <p>Puedes seguir a Jessica en <a href="https://twitter.com/jessrudder">Twitter</a> y <a href="https://github.com/jessrudder">GitHub</a></p>
-              </article>
+              <article dangerouslySetInnerHTML={contentPageHtml()} />
             </div>
           </section>
           <GetTickets theme="BlueColor" />

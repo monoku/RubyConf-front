@@ -37,7 +37,7 @@
 
 .Header
   width: 100%
-  height: 190px
+  height: calc(100vh - 63px)
   background: url('../../../assets/images/Photos_hero.png') center center no-repeat
   background-attachment: fixed
   background-position: center
@@ -57,39 +57,24 @@
       padding: 50px 0px
 .HeaderContent
   position: relative
-  & h1
-  font-family: $sourceCode
-  font-size: $font-title-big-mobil
-  font-weight: bold
-  letter-spacing: 1.5px
-  color: $white-three
-.Section
-  width: 670px
-  +small-only
-    width: 100%
-  p
-    font-family: $roboto
-    font-size: $font-text-big 
-    line-height: 1.59
-    color: $greyish-brown
-    & a
-      color: #2843f8
-      font-family: $roboto
-      font-size: $font-text-big 
-      line-height: 1.59
-      text-decoration: none
-  h2
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+  padding-top: 20vh
+  & > h1
     font-family: $sourceCode
     font-size: $font-title-big-mobil
-    font-weight: 500
-    color: $cobalt-blue
-  ul
-    padding: 0
-    li
-      list-style: none
-      a 
-        color: #2843f8
-        font-family: $roboto
-        font-size: $font-text-big 
-        line-height: 1.59
-        text-decoration: none
+    font-weight: bold
+    letter-spacing: 1.5px
+    color: $white-three
+    text-align: center
+  & > p
+    font-family: $sourceCode
+    font-size: $font-text-big 
+    letter-spacing: 1.5px
+    color: $white-three
+    text-align: center
+    margin: 5px auto
+  & > button
+    margin-top: 40px
