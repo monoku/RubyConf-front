@@ -33,7 +33,6 @@ class Schedule extends Component {
       }, { friday: [], saturday: []})
 
       this.props.saveSchedule(schedules)
-
       this.setState({
         loading: false
       })
@@ -74,7 +73,6 @@ class Schedule extends Component {
               <ul className={Styles.Schedule}>
                 {
                  schedules.friday.map((item)=>{
-                   console.log(item)
                     return (
                       <li className={Styles.ListSchedule}>
                         <div>

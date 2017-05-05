@@ -29,7 +29,8 @@
     "redux-thunk": "^2.2.0",
     "sass-resources-loader": "^1.2.1",
     "showdown": "^1.6.4",
-    "style-it": "^1.6.7"
+    "style-it": "^1.6.7",
+    "velocity-animate": "^1.5.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",

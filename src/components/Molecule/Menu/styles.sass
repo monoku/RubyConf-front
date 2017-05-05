@@ -31,14 +31,14 @@
     display: none
     position: fixed
     opacity: 0.9
-    background: linear-gradient(to bottom, $cherry-red-two 0%, $cobalt-blue 100%)
+    background-image: linear-gradient(150deg, $cobalt-blue, #eb151c 93%)
     top: -100px
     bottom: -100px
     left: 0
     right: 0
     z-index: 2
     overflow: hidden
-    padding-top: 120px
+    padding-top: 165px
 
   &.active
     display: block
@@ -87,10 +87,15 @@
   &:before
     content: "• "
     color: $cobalt-blue
-    font-size: $font-text-small 
+    font-size: $font-text-small
+    +small-only
+      font-size: $font-text-19
+      margin: 0px auto
+      content: none
   +small-only
-    font-size: $font-title-big
-    margin: 10px auto
+    font-size: $font-text-19
+    margin: 0px auto
+    line-height: 2.26
   a 
     font-family: $roboto
     font-size: $font-text-small 
@@ -108,6 +113,7 @@
   position: absolute
   cursor: pointer
   right: 20px
+  top: 20px
   display: none
   justify-content: center
   align-content: center
@@ -119,7 +125,34 @@
     display: flex
     line-height: 45px
     user-select: none
+    z-index: 4
+
 .Icon
   color: $white-three 
   font-size: 24px
   user-select: none
+
+
+/* Hamburger Menu */
+.McButton
+  position: absolute
+  top: 50%
+  left: 50%
+  margin-left: -(28px /2)
+  margin-top: -(22px /2)
+  width: 30px
+  height: (30px * 3) /4
+  cursor: pointer
+  b
+    position: absolute
+    left: 0
+    width: 30px
+    height: 3px
+    background-color: white
+    &:nth-child(1)
+      top: 0
+    &:nth-child(2)
+      top: 50%
+    &:nth-child(3)
+      top: 100%
+

@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
-import $ from "jquery"
 import { withRouter } from 'react-router'
 import Icon from '../../Atoms/Icon'
 import Button from '../../Atoms/Button'
 import Styles from './styles.sass'
 
+var $ = require('jquery')
+window.jQuery = window.$ = $
+require('velocity-animate')
+delete window.jQuery
+delete window.$
 
 class Menu extends Component {
 
@@ -15,12 +19,14 @@ class Menu extends Component {
     }
     this.toggleMenu = this.toggleMenu.bind(this)
     this.animateComponentEvent = this.animateComponentEvent.bind(this)
-    this.goToByScroll = this.goToByScroll.bind(this)
     this.getTicket = this.getTicket.bind(this)
+    this.goToByScroll = this.goToByScroll.bind(this)
+    this.McButton = this.McButton.bind(this)
   }
 
   componentDidMount() {
     this.animateComponentEvent()
+    this.McButton()
   }
 
   animateComponentEvent() {
@@ -35,14 +41,35 @@ class Menu extends Component {
        }
      })
   }
+  McButton() {
+  }
   
   toggleMenu() {
     this.setState({
       menuIsOpen: !this.state.menuIsOpen
     })
+    var McButton = $("[data=hamburger-menu]")
+    var McBar1 = McButton.find("b:nth-child(1)")
+    var McBar2 = McButton.find("b:nth-child(2)")
+    var McBar3 = McButton.find("b:nth-child(3)")
+
+    McButton.toggleClass("active")
+    if (McButton.hasClass("active")) {
+      McBar1.velocity({ top: "50%" }, {duration: 200, easing: "swing"})
+      McBar3.velocity({ top: "50%" }, {duration: 200, easing: "swing"})
+      McBar3.velocity({rotateZ:"90deg"}, {duration: 800, delay: 200, easing: [500,20] })
+      McButton.velocity({rotateZ:"135deg"}, {duration: 800, delay: 200, easing: [500,20] })
+    } else {
+      McButton.velocity("reverse")
+      McBar3.velocity({rotateZ:"0deg"}, {duration: 800, easing: [500,20] })
+      McBar3.velocity({ top: "100%" }, {duration: 200, easing: "swing"})
+      McBar1.velocity("reverse", {delay: 800})
+    }
+
   }
   goToByScroll(id) {
     if(location.pathname === '/') {
+      this.toggleMenu()
       id = id.replace("link", "")
       $('html,body').animate(
         { scrollTop: $("#"+id).offset().top - 120
@@ -71,7 +98,6 @@ class Menu extends Component {
     return (
       <div id="menu" className={Styles.Container}>
         <div className={`${Styles.Left} ${menuIsOpen ? Styles.active : ''}`}>
-          <a onClick={this.toggleMenu} className={Styles.Close}>Close X</a>
           <a className={Styles.Logo} href="/">
             <Icon type="IconRubyConf" />
           </a>
@@ -90,7 +116,11 @@ class Menu extends Component {
           <Button text="Get Ticket" theme="Red" size="Small" onClick={this.getTicket} />
         </div>
         <div onClick={this.toggleMenu} className={Styles.ContainerMobil}>
-          <Icon className={Styles.Icon} type="IconMenu" />
+          <a className={Styles.McButton} data="hamburger-menu">
+            <b id="Bar-1"></b>
+            <b id="Bar-2"></b>
+            <b id="Bar-3"></b>
+          </a>
         </div>
       </div>
     )
