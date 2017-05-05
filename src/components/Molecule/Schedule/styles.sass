@@ -3,9 +3,6 @@
 
 .row
   @extend .row
-  padding: 50px 0px
-  +small-only
-    padding: 50px 10%
   &.padding_100
     padding: 100px
     +small-only
@@ -36,5 +33,117 @@
 .Container
 
 .tabHeader
+  background-image: url('../../../assets/images/Red.jpg')
+  width: 100%
+  height: 90px
+  &.active
+    background-image: url('../../../assets/images/Blue.jpg')
+  
 .tabList
+  display: flex
+  flex-direction: row
+  list-style: none
+  align-items: center
+  padding: 0
+  margin: 0
 .tabItems
+  width: 50%
+  text-align: center
+  height: 90px
+  display: flex
+  justify-content: center
+  align-items: center
+  span 
+    font-family: $sourceCode
+    font-size: $font-title-big-mobil
+    font-weight: 600
+    color: $white-three
+    cursor: pointer
+    opacity: 0.8
+    &.active
+      opacity: 1
+    &:after
+      content: ''
+      display: block
+      width: 130px
+      height: 2px
+      margin-top: 12px
+      background-color: $white-three
+    &.Red
+      &:after
+        background-color: $cherry-red-two
+    &.Blue
+      &:after
+        background-color: $cobalt-blue 
+.tabContent
+  background-color: $white-three 
+  width: calc( 90% - 150px )
+  margin: 0px auto
+  padding-left: 150px
+  +small-only
+    padding-left: 0px
+    width: 95%  
+.Schedule
+  padding: 0
+  margin: 0
+  display: flex
+  flex-direction: column
+
+.ListSchedule
+  padding: 0
+  margin: 0
+  align-content: center
+  align-items: center
+  display: flex
+  flex-direction: row
+  padding: 15px 0px
+.friday,.saturday
+  display: none
+  &.active
+    display: block
+
+.ListScheduleInfo
+  margin-left: 35px
+  flex: 1
+
+.ListScheduleIcon
+  font-size: 48px
+  color: $cobalt-blue
+.ListScheduleHour
+  font-family: $roboto
+  font-size: $font-text-big 
+  line-height: 1.59
+  color: $greyish-brown
+  margin: 0px
+.ListScheduleHourIcon
+  font-size: $font-text-small
+  color: $greyish
+.ListScheduleTitle
+  font-family: $sourceCode
+  font-size: $font-title-big-mobil
+  font-weight: 500
+  color: $cobalt-blue
+  margin: 0px
+
+.ListScheduleName
+  font-family: $sourceCode
+  font-size: $font-text-big
+  font-weight: 300
+  line-height: 1.29
+  color: $greyish-brown
+  margin-top: 11px
+  &:after
+    content: ''
+    display: block
+    width: 391px
+    height: 2px
+    margin-top: 9px
+    background-color: $cobalt-blue
+    +small-only
+      width: 100%
+
+.Red
+  color: $cherry-red-two
+.RedAfter
+  &:after
+    background-color: $cherry-red-two

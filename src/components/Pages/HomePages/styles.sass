@@ -5,13 +5,16 @@
 
 .row
   @extend .row
-  padding: 50px 0px
   +small-only
     padding: 50px 10%
   &.padding_100
     padding: 100px
     +small-only
       padding: 50px 10%
+  &.padding_100_bottom
+    padding-bottom: 100px
+    +small-only
+      padding-bottom: 50px
   &.padding_150
     padding: 150px
     +small-only
@@ -82,19 +85,20 @@
 .TextDescription
   color: $white-three
   font-family: $roboto
-  font-size: 17px
+  font-size: $font-text-big 
   height: 81px
   line-height: 1.59
-  margin-bottom: 30px
+  margin-bottom: 45px
   width: 384px
   +small-only
     width: 100%
+    font-size: $font-text-big 
   &:after
     background-color: #ec0a12
     content: ''
     display: block
     height: 2px
-    margin-top: 10px
+    margin-top: 12px
     width: 50px
 
 .TextDate
@@ -105,6 +109,7 @@
   height: 32px
   +small-only
     margin-top: 60px
+    font-size: $font-text-19
 
 .TextPlace
   color: $white-three
@@ -112,6 +117,9 @@
   font-size: $font-text-big 
   height: 22px
   line-height: 1.16
+  +small-only
+    margin-top: 10px
+    font-size: $font-text-19
 .ArrowDown
   color: $white-three
   display: block
@@ -157,6 +165,7 @@
   align-items: center
   display: flex
   justify-content: space-between
+  margin: 60px auto
   & .TextBlue
       color: $cobalt-blue
   & .TextWhite

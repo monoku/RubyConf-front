@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import showdown from 'showdown'
+import Loading from '../../Molecule/Loading'
 import Menu from '../../Molecule/Menu'
 import Footer from '../../Molecule/Footer'
 import GetTickets from '../../Molecule/GetTickets'
@@ -12,8 +13,8 @@ class ContentPages extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      loading: false,
-      contetPage: {} 
+      loading: true,
+      contetPage: {}
     }
     this.initFetch = this.initFetch.bind(this)
   }
@@ -30,7 +31,7 @@ class ContentPages extends Component {
       }
       this.setState({
         contetPage: pagesData.items[0].fields,
-        loading: true
+        loading: false
       })
 
     } catch (error) {
@@ -43,6 +44,9 @@ class ContentPages extends Component {
     const converter = new showdown.Converter()
     function contentPageHtml() {
       return {__html: converter.makeHtml(contetPage.content)}
+    }
+    if(this.state.loading){
+      return <Loading />
     }
     return (
       <div className={Styles.Container}>

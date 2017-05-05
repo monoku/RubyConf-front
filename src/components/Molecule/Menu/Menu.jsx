@@ -53,7 +53,7 @@ class Menu extends Component {
         $('html,body').animate(
           { scrollTop: $("#"+id).offset().top - 120
         }, 'slow')
-      }, 100)
+      }, 200)
     }
   }
   getTicket() {
@@ -87,7 +87,7 @@ class Menu extends Component {
           </nav>
         </div>
         <div className={Styles.Right}>
-          <Button text="Get Ticket" theme="Red" onClick={this.getTicket} />
+          <Button text="Get Ticket" theme="Red" size="Small" onClick={this.getTicket} />
         </div>
         <div onClick={this.toggleMenu} className={Styles.ContainerMobil}>
           <Icon className={Styles.Icon} type="IconMenu" />

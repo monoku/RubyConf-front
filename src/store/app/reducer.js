@@ -1,11 +1,13 @@
 import { LOADING_APP, 
          SPEAKERS_APP,
-         SPONSOR_APP } from './action'
+         SPONSOR_APP,
+         SCHEDULE_APP } from './action'
 
 const initialState = {
   appLoading: false,
   speakers: [],
-  sponsors: []
+  sponsors: [],
+  schedules: []
 }
 
 export default (state = initialState || {}, action = {}) => {
@@ -16,6 +18,8 @@ export default (state = initialState || {}, action = {}) => {
       return Object.assign({}, state, { speakers: action.value })
     case  SPONSOR_APP:
       return Object.assign({}, state, { sponsors: action.value })
+    case  SCHEDULE_APP:
+      return Object.assign({}, state, { schedules: action.value })
     default:
       return state
   }

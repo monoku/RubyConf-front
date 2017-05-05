@@ -1,12 +1,13 @@
 import { connect } from 'react-redux'
-import {saveSpeakers, saveSponsor } from '../store/app/action'
+import {saveSpeakers, saveSponsor, saveSchedule } from '../store/app/action'
 import HomePage from '../components/Pages/HomePages'
 
 
 const mapStateToProps = (state) => {
   return {
     speakers: state.app.speakers,
-    sponsors: state.app.sponsors
+    sponsors: state.app.sponsors,
+    schedules: state.app.schedules
   }
 }
 
@@ -16,6 +17,9 @@ const mapDispatchToProps = dispatch => ({
   },
    saveSponsor(data) {
     dispatch(saveSponsor(data))
+  },
+   saveSchedule(data) {
+    dispatch(saveSchedule(data))
   }
 })
 /**

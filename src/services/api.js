@@ -9,6 +9,10 @@ const api = {
     async sponsor() {
       const response = await contentful.getEntries({'content_type': 'sponsor'})
       return response
+    },
+    async agendaItem() {
+      const response = await contentful.getEntries({'content_type': 'agendaItem', order: 'fields.order'})
+      return response
     }
   },
   pagesData: {

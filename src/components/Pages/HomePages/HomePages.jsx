@@ -3,18 +3,19 @@ import Menu from '../../Molecule/Menu'
 import Footer from '../../Molecule/Footer'
 import CodeRuby from '../../Molecule/CodeRuby'
 import FormContact from '../../Molecule/FormContact'
+import Loading from '../../Molecule/Loading'
 import GetTickets from '../../Molecule/GetTickets'
 import Schedule from '../../Molecule/Schedule'
 import Speakers from '../../Organisms/Speakers'
 import Icon from '../../Atoms/Icon'
 import Divider from '../../Atoms/Divider'
-import RubyLogo from '../../Atoms/RubyLogo'
 import Button from '../../Atoms/Button'
 import Title from '../../Atoms/Title'
 import Text from '../../Atoms/Text'
 import Styles from './styles.sass'
 
 import MapImg from '../../../assets/images/Map.png'
+import Logo from '../../../assets/images/rubyConfLogo.svg'
 
 import api from '../../../services/api'
 
@@ -136,7 +137,7 @@ class HomeAppPage extends Component {
     } = this.props
 
     if(this.state.loading){
-      return <p>Loader</p>
+      return <Loading />
     }
     
     return (
@@ -195,7 +196,7 @@ class HomeAppPage extends Component {
             <Menu />
             <div className={`${Styles.row} ${Styles.padding_150}`}>
               <div className={`${Styles.small_12} ${Styles.large_6} ${Styles.columns} ${Styles.BoxLogo} ${Styles.animated} ${Styles.slideInDown}`}>
-                <RubyLogo />
+                <img className={`${Styles.Logo}`} src={Logo} alt=""/>
               </div>
               <div className={`${Styles.small_12} ${Styles.large_6} ${Styles.columns} ${Styles.animated} ${Styles.slideInDown}`}>
                 <p className={Styles.TextDescription}>
@@ -222,7 +223,7 @@ class HomeAppPage extends Component {
               basicColor="#c0c0c0"
               PrimaryColor="#0024A7"
               SecondColor="#EB151C"
-              name="speakers"
+              name="speakers-div"
             />
             <Title className={Styles.TextBlue} type="Big">Speakers</Title>
           </div>
@@ -238,23 +239,23 @@ class HomeAppPage extends Component {
               <Divider
                 basicColor="#FFFFFF"
                 PrimaryColor="#4d4848"
-                SecondColor="#f6f6f6"
-                name="schedule"
+                SecondColor="#848383"
+                name="schedule-div"
               />
               <Title className={Styles.TextWhite} type="Big">Schedule</Title>
             </div>
-            <Schedule />
+            <Schedule saveSchedule={this.props.saveSchedule} schedules={this.props.schedules} />
             <GetTickets theme="WhiteColor" />
             <div id="place" className={`${Styles.DividerSection} ${Styles.row}`}>
               <Divider
                 basicColor="#FFFFFF"
                 PrimaryColor="#4d4848"
-                SecondColor="#f6f6f6"
-                name="location"
+                SecondColor="#848383"
+                name="location-div"
               />
               <Title className={Styles.TextWhite} type="Big">Location</Title>
             </div>
-            <div className={Styles.row}>
+            <div className={`${Styles.row} ${Styles.padding_100_bottom}`}>
               <div className={`${Styles.small_12} ${Styles.large_12} ${Styles.columns}`}>
                 <div>
                   <Text className={`${Styles.Bold} ${Styles.Place}`}><Icon type="IconPlace" /> El Teatrico</Text>
@@ -280,7 +281,7 @@ class HomeAppPage extends Component {
                 <div className={Styles.Divider} />
                 <Text className={Styles.Description}>We dedicate ourselves to making everyone feel welcome and at home, both during the conference and events.</Text>
                 <Text className={Styles.Description}>Our Code of Conduct offers some guidelines to ensure this for both attendees and speakers.</Text>
-                <Button  onClick={this.getCodeOfConduct} className={Styles.Button} text="Code of conduct" theme="Red" />
+                <Button  size="Small" onClick={this.getCodeOfConduct} className={Styles.Button} text="Code of conduct" theme="Red" />
               </div>
             </div>
           </section>
@@ -290,7 +291,7 @@ class HomeAppPage extends Component {
                 basicColor="#c0c0c0"
                 PrimaryColor="#0024A7"
                 SecondColor="#EB151C"
-                name="sponsors"
+                name="sponsors-div"
               />
               <Title className={Styles.TextCherry} type="Big">Sponsors</Title>
             </div>

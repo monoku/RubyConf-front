@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import showdown from 'showdown'
 import Menu from '../../Molecule/Menu'
+import Loading from '../../Molecule/Loading'
 import Footer from '../../Molecule/Footer'
 import GetTickets from '../../Molecule/GetTickets'
 import Styles from './styles.sass'
@@ -30,7 +31,7 @@ class NewsInside extends Component {
       }
       this.setState({
         news: pagesData.items[0].fields,
-        loading: true
+        loading: false
       })
     } catch (error) {
       console.log(error)
@@ -42,6 +43,9 @@ class NewsInside extends Component {
     const converter = new showdown.Converter()
     function contentPageHtml() {
       return {__html: converter.makeHtml(news.content)}
+    }
+    if(this.state.loading){
+      return <Loading />
     }
     return (
       <div className={Styles.Container}>

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import moment from 'moment'
 import Menu from '../../Molecule/Menu'
 import Footer from '../../Molecule/Footer'
+import Loading from '../../Molecule/Loading'
 import GetTickets from '../../Molecule/GetTickets'
 import Styles from './styles.sass'
 
@@ -32,7 +33,7 @@ class News extends Component {
 
       this.setState({
         news: news,
-        loading: true
+        loading: false
       })
 
       console.log(news)
@@ -43,6 +44,9 @@ class News extends Component {
 
   render() {
     moment.locale()
+    if(this.state.loading){
+      return <Loading />
+    }
     return (
       <div className={Styles.Container}>
         <header className={`${Styles.Header}`}>
