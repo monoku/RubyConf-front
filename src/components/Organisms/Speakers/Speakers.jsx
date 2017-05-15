@@ -8,7 +8,6 @@ import Styles from './styles.sass'
 
 
 class Speakers extends Component {
-
   constructor(props) {
     super(props)
     this.state = {

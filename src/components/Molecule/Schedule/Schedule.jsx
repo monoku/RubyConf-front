@@ -5,7 +5,6 @@ import Styles from './styles.sass'
 import api from '../../../services/api'
 
 class Schedule extends Component {
-
   constructor(props) {
     super(props)
     this.state = {
@@ -24,11 +23,10 @@ class Schedule extends Component {
     try {
       const scheduleData = await api.homePages.agendaItem()
       let schedules = scheduleData.items.reduce((itemsActerior ,items) => {
-        if(items.fields.day === 'friday'){
-          itemsActerior.friday.push(items.fields)
-        }else{
-           itemsActerior.saturday.push(items.fields)
-        }
+        itemsActerior[items.fields.day].push({
+          ...items.fields,
+          id: items.sys.id,
+        })
         return itemsActerior
       }, { friday: [], saturday: []})
 
@@ -71,41 +69,35 @@ class Schedule extends Component {
           <div className={Styles.tabContent}>
             <div className={`${Styles.friday} ${ !isStaturday ? Styles.active : '' }`}>
               <ul className={Styles.Schedule}>
-                {
-                 schedules.friday.map((item)=>{
-                    return (
-                      <li className={Styles.ListSchedule}>
-                        <div>
-                          <Icon className={Styles.ListScheduleIcon} type={item.iconClass} />
-                        </div>
-                        <div className={Styles.ListScheduleInfo}>
-                          <span className={Styles.ListScheduleHour}><Icon className={Styles.ListScheduleHourIcon}  type="IconTime" /> {item.startTime} - {item.endTime}</span>
-                          <p className={Styles.ListScheduleTitle}>{item.name}</p>
-                          <p className={Styles.ListScheduleName}>{item.speaker || 'RubyConf team'}</p>
-                        </div>
-                      </li>
-                    )
-                  })
+                { schedules.friday.map((item) => (
+                    <li key={item.id} className={Styles.ListSchedule}>
+                      <div>
+                        <Icon className={Styles.ListScheduleIcon} type={item.iconClass} />
+                      </div>
+                      <div className={Styles.ListScheduleInfo}>
+                        <span className={Styles.ListScheduleHour}><Icon className={Styles.ListScheduleHourIcon}  type="IconTime" /> {item.startTime} - {item.endTime}</span>
+                        <p className={Styles.ListScheduleTitle}>{item.name}</p>
+                        <p className={Styles.ListScheduleName}>{item.speaker || 'RubyConf team'}</p>
+                      </div>
+                    </li>
+                  ))
                 }
               </ul>
             </div>
             <div className={`${Styles.saturday} ${ isStaturday ? Styles.active : '' }`}>
               <ul className={Styles.Schedule}>
-                {
-                  schedules.saturday.map((item)=>{
-                    return (
-                      <li className={Styles.ListSchedule}>
-                        <div>
-                          <Icon className={`${Styles.ListScheduleIcon} ${Styles.Red}`} type={item.iconClass} />
-                        </div>
-                        <div className={Styles.ListScheduleInfo}>
-                          <span className={Styles.ListScheduleHour}><Icon className={Styles.ListScheduleHourIcon}  type="IconTime" /> {item.startTime} - {item.endTime}</span>
-                          <p className={`${Styles.ListScheduleTitle} ${Styles.Red}`}>{item.name}</p>
-                          <p className={`${Styles.ListScheduleName} ${Styles.RedAfter}`}>{item.speaker || 'RubyConf team'}</p>
-                        </div>
-                      </li>
-                    )
-                  })
+                { schedules.saturday.map((item) => (
+                    <li key={item.id} className={Styles.ListSchedule}>
+                      <div>
+                        <Icon className={`${Styles.ListScheduleIcon} ${Styles.Red}`} type={item.iconClass} />
+                      </div>
+                      <div className={Styles.ListScheduleInfo}>
+                        <span className={Styles.ListScheduleHour}><Icon className={Styles.ListScheduleHourIcon}  type="IconTime" /> {item.startTime} - {item.endTime}</span>
+                        <p className={`${Styles.ListScheduleTitle} ${Styles.Red}`}>{item.name}</p>
+                        <p className={`${Styles.ListScheduleName} ${Styles.RedAfter}`}>{item.speaker || 'RubyConf team'}</p>
+                      </div>
+                    </li>
+                  ))
                 }
               </ul>
             </div>

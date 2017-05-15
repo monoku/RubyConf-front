@@ -3,7 +3,7 @@ const contentful = require('../utils/contentful')
 const api = {
   homePages: {
     async speakers() {
-      const response = await contentful.getEntries({'content_type': 'speakers'})
+      const response = await contentful.getEntries({'content_type': 'speakers', order: 'fields.order'})
       return response
     },
     async sponsor() {

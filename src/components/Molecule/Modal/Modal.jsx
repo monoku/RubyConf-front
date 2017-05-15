@@ -95,7 +95,7 @@ ModalCustom.defaultProps = {
 
 ModalCustom.propTypes = {
   modalOptions: PropTypes.object,
-  children: PropTypes.object,
+  children: PropTypes.any,
   isOpen: PropTypes.bool,
   buttonShow: PropTypes.bool,
   closeHandle: PropTypes.func

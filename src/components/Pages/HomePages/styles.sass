@@ -28,7 +28,7 @@
 
 .large_4
   @extend .large-4
-  
+
 .large_6
   @extend .large-6
 
@@ -68,7 +68,7 @@
 .HeaderContent
   position: relative
   overflow: hidden
-.HeaderEffectTri 
+.HeaderEffectTri
   position: absolute
   width: 100%
   bottom: -100px
@@ -85,14 +85,14 @@
 .TextDescription
   color: $white-three
   font-family: $roboto
-  font-size: $font-text-big 
+  font-size: $font-text-big
   height: 81px
   line-height: 1.59
   margin-bottom: 45px
   width: 384px
   +small-only
     width: 100%
-    font-size: $font-text-big 
+    font-size: $font-text-big
   &:after
     background-color: #ec0a12
     content: ''
@@ -114,7 +114,7 @@
 .TextPlace
   color: $white-three
   font-family: $sourceCode
-  font-size: $font-text-big 
+  font-size: $font-text-big
   height: 22px
   line-height: 1.16
   +small-only
@@ -287,7 +287,7 @@
     font-family: $roboto
     width: 100%
     padding-bottom: 20px
-    border-bottom: 1px solid $pinkish-grey  
+    border-bottom: 1px solid $pinkish-grey
   & .ListSponsors
     display: flex
     flex-direction: row
@@ -295,10 +295,31 @@
     justify-content: center
     padding: 30px 0px
     margin: auto
+    +small-only
+      flex-direction: column
+
     li
+      text-align: center
       list-style: none
-      img 
+      & + li
+        +small-only
+          margin-top: 16px
+      img
         width: 70%
+
+  .Gold li
+    width: 33%
+    +small-only
+      width: 90%
+  .Silver li
+    width: 25%
+    +small-only
+      width: 80%
+  .Bronze li
+    width: 20%
+    +small-only
+      width: 75%
+
 
 .Contact
   background-image: url('../../../assets/images/Background-medellin.png')

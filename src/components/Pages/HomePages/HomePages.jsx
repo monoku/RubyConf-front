@@ -5,7 +5,7 @@ import CodeRuby from '../../Molecule/CodeRuby'
 import FormContact from '../../Molecule/FormContact'
 import Loading from '../../Molecule/Loading'
 import GetTickets from '../../Molecule/GetTickets'
-import Schedule from '../../Molecule/Schedule'
+// import Schedule from '../../Molecule/Schedule'
 import Speakers from '../../Organisms/Speakers'
 import Icon from '../../Atoms/Icon'
 import Divider from '../../Atoms/Divider'
@@ -43,41 +43,31 @@ class HomeAppPage extends Component {
       const speakersData = await api.homePages.speakers()
       let speakers = speakersData.items.map((items) => {
         let speakers = {}
+        speakers.id = items.sys.id
         speakers.name = items.fields.name
         speakers.description = items.fields.description
         speakers.descriptionEs = items.fields.descriptionEs
         speakers.image = items.fields.image.fields.file.url
-        speakers.imageHover = typeof items.fields.imageHover !== 'undefined' 
-            ? items.fields.imageHover.fields.file.url 
+        speakers.imageHover = typeof items.fields.imageHover !== 'undefined'
+            ? items.fields.imageHover.fields.file.url
             : ''
         return speakers
       })
 
       this.props.saveSpeakers(speakers)
+
       const sponsorData = await api.homePages.sponsor()
 
-      let sponsors = sponsorData.items.reduce((valorAnterior , valorActual ) => {
-        if(valorActual.fields.level === 'supporters'){
-          valorAnterior.supporters.push({
-            level: valorActual.fields.level,
-            logo: valorActual.fields.logo.fields.file.url,
-            name: valorActual.fields.name
-          })
-        } else if(valorActual.fields.level === 'bronze'){
-          valorAnterior.bronze.push({
-            level: valorActual.fields.level,
-            logo: valorActual.fields.logo.fields.file.url,
-            name: valorActual.fields.name
-          })
-        } else if(valorActual.fields.level === 'silver'){
-          valorAnterior.silver.push({
-            level: valorActual.fields.level,
-            logo: valorActual.fields.logo.fields.file.url,
-            name: valorActual.fields.name
-          })
-        }
+      let sponsors = sponsorData.items.reduce((valorAnterior, valorActual) => {
+        valorAnterior[valorActual.fields.level].push({
+          id: valorActual.sys.id,
+          level: valorActual.fields.level,
+          logo: valorActual.fields.logo.fields.file.url,
+          name: valorActual.fields.name
+        })
+
         return valorAnterior
-      }, { supporters: [], bronze: [], silver: [] })
+      }, { gold: [], bronze: [], silver: [] })
 
       this.props.saveSponsor(sponsors)
 
@@ -91,7 +81,7 @@ class HomeAppPage extends Component {
 
   animateComponentEvent() {
     window.addEventListener('scroll', () => {
-      
+
       const currentScroll = window.scrollY || window.pageYOffset
       const main = document.getElementsByTagName('main')[0]
       const sgv = document.getElementById('trianglesEffect')
@@ -100,7 +90,7 @@ class HomeAppPage extends Component {
       const scroolTriangle = header / sgv.childElementCount
       const diferen = header - topMain.top
       let showTriangle = parseInt(diferen / scroolTriangle, 10)
-      
+
       if(showTriangle > sgv.childElementCount){
         showTriangle = sgv.childElementCount
       }
@@ -126,7 +116,7 @@ class HomeAppPage extends Component {
     }, { passive: true })
   }
   getCodeOfConduct() {
-    var win = window.open('https://github.com/RubyConfCo/code-of-conduct/blob/master/README.md', '_blank')  
+    var win = window.open('https://github.com/RubyConfCo/code-of-conduct/blob/master/README.md', '_blank')
     win.focus()
   }
 
@@ -139,7 +129,7 @@ class HomeAppPage extends Component {
     if(this.state.loading){
       return <Loading />
     }
-    
+
     return (
       <div className={Styles.Container}>
         <header className={`${Styles.Header}`}>
@@ -200,7 +190,7 @@ class HomeAppPage extends Component {
               </div>
               <div className={`${Styles.small_12} ${Styles.large_6} ${Styles.columns} ${Styles.animated} ${Styles.slideInDown}`}>
                 <p className={Styles.TextDescription}>
-                  Be part of RubyConf Colombia 2017. The organizing team is hard at work to make this one of the best Ruby conferences ever.
+                  Join us in the 3rd edition of the premier Ruby conference in Latin America
                 </p>
                 <p className={Styles.TextDate}><Icon type="IconCalendar" /> 8 - 9 September, 2017</p>
                 <p className={Styles.TextPlace}><Icon type="IconPlace" /> Medellín, Colombia</p>
@@ -228,23 +218,24 @@ class HomeAppPage extends Component {
             <Title className={Styles.TextBlue} type="Big">Speakers</Title>
           </div>
           <section id="speakers" className={Styles.row}>
-              {
-                speakers.map((item) => {
-                  return <Speakers perfil={item}  />
-                })
+              { speakers.map((item) => (
+                  <Speakers key={item.id} perfil={item} />
+                ))
               }
           </section>
           <section id="schedule" className={`${Styles.Shedule}`}>
-            <div className={`${Styles.DividerSection} ${Styles.row}`}>
-              <Divider
-                basicColor="#FFFFFF"
-                PrimaryColor="#4d4848"
-                SecondColor="#848383"
-                name="schedule-div"
-              />
-              <Title className={Styles.TextWhite} type="Big">Schedule</Title>
-            </div>
-            <Schedule saveSchedule={this.props.saveSchedule} schedules={this.props.schedules} />
+            {/*
+              <div className={`${Styles.DividerSection} ${Styles.row}`}>
+                <Divider
+                  basicColor="#FFFFFF"
+                  PrimaryColor="#4d4848"
+                  SecondColor="#848383"
+                  name="schedule-div"
+                />
+                <Title className={Styles.TextWhite} type="Big">Schedule</Title>
+              </div>
+              <Schedule saveSchedule={this.props.saveSchedule} schedules={this.props.schedules} />
+            */}
             <GetTickets theme="WhiteColor" />
             <div id="place" className={`${Styles.DividerSection} ${Styles.row}`}>
               <Divider
@@ -258,8 +249,12 @@ class HomeAppPage extends Component {
             <div className={`${Styles.row} ${Styles.padding_100_bottom}`}>
               <div className={`${Styles.small_12} ${Styles.large_12} ${Styles.columns}`}>
                 <div>
-                  <Text className={`${Styles.Bold} ${Styles.Place}`}><Icon type="IconPlace" /> El Teatrico</Text>
-                  <Text className={`${Styles.Place} ${Styles.Margin_left_40}`}>Transversal 39B # Circular 2 - 46, Medellín, Antioquia, Colombia</Text>
+                  <Text className={`${Styles.Bold} ${Styles.Place}`}>
+                    <Icon type="IconPlace" /> Ruta N
+                  </Text>
+                  <Text className={`${Styles.Place} ${Styles.Margin_left_40}`}>
+                    Calle 67 Nº 52-20, Medellín, Antioquia, Colombia
+                  </Text>
                 </div>
               </div>
             </div>
@@ -296,30 +291,39 @@ class HomeAppPage extends Component {
               <Title className={Styles.TextCherry} type="Big">Sponsors</Title>
             </div>
             <div className={`${Styles.row}`}>
-              <Text className={Styles.Title}>Silver</Text>
-              <ul className={Styles.ListSponsors}>
-                {
-                  sponsors.silver.map((item) => {
-                    return <li><img src={item.logo} alt={item.name} /></li>
-                  })
-                }
-              </ul>
-              <Text className={Styles.Title}>Bronze</Text>
-              <ul className={Styles.ListSponsors}>
-                {
-                  sponsors.bronze.map((item) => {
-                    return <li><img src={item.logo} alt={item.name} /></li>
-                  })
-                }
-              </ul>
-              <Text className={Styles.Title}>Supporters</Text>
-              <ul className={Styles.ListSponsors}>
-                 {
-                  sponsors.supporters.map((item) => {
-                    return <li><img src={item.logo} alt={item.name} /></li>
-                  })
-                }
-              </ul>
+              { sponsors.gold.length > 0 &&
+                <div className={`${Styles.Gold}`}>
+                  <Text className={Styles.Title}>Gold</Text>
+                  <ul className={Styles.ListSponsors}>
+                    { sponsors.gold.map((item) => (
+                        <li key={ item.id }><img src={item.logo} alt={item.name} /></li>
+                      ))
+                    }
+                  </ul>
+                </div>
+              }
+              { sponsors.silver.length > 0 &&
+                <div className={`${Styles.Silver}`}>
+                  <Text className={Styles.Title}>Silver</Text>
+                  <ul className={Styles.ListSponsors}>
+                    { sponsors.silver.map((item) => (
+                        <li key={ item.id }><img src={item.logo} alt={item.name} /></li>
+                      ))
+                    }
+                  </ul>
+                </div>
+              }
+              { sponsors.bronze.length > 0 &&
+                <div className={`${Styles.Bronze}`}>
+                  <Text className={Styles.Title}>Bronze</Text>
+                  <ul className={Styles.ListSponsors}>
+                    { sponsors.bronze.map((item) => (
+                        <li key={ item.id }><img src={item.logo} alt={item.name} /></li>
+                      ))
+                    }
+                  </ul>
+                </div>
+              }
             </div>
           </section>
           <section className={Styles.Contact}>

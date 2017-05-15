@@ -43,7 +43,7 @@ class Menu extends Component {
   }
   McButton() {
   }
-  
+
   toggleMenu() {
     this.setState({
       menuIsOpen: !this.state.menuIsOpen
@@ -84,7 +84,7 @@ class Menu extends Component {
     }
   }
   getTicket() {
-    var win = window.open('https://ti.to/colombia-dev/rubyconf-colombia-2017/', '_blank')  
+    var win = window.open('https://ti.to/colombia-dev/rubyconf-colombia-2017/', '_blank')
     win.focus()
   }
 
@@ -104,7 +104,7 @@ class Menu extends Component {
           <nav>
             <ul className={Styles.Menu}>
               <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('speakers')} >Speakers</a></li>
-              <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('schedule')}>Schedule</a></li>
+              {/*<li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('schedule')}>Schedule</a></li>*/}
               <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('place')}>Place</a></li>
               <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('conduct')}>Conduct</a></li>
               <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('sponsors')}>Sponsors</a></li>
@@ -113,7 +113,7 @@ class Menu extends Component {
           </nav>
         </div>
         <div className={Styles.Right}>
-          <Button text="Get Ticket" theme="Red" size="Small" onClick={this.getTicket} />
+          <Button text="Get your ticket" theme="Red" size="Small" onClick={this.getTicket} />
         </div>
         <div onClick={this.toggleMenu} className={Styles.ContainerMobil}>
           <a className={Styles.McButton} data="hamburger-menu">
