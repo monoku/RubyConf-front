@@ -63,7 +63,8 @@ class HomeAppPage extends Component {
           id: valorActual.sys.id,
           level: valorActual.fields.level,
           logo: valorActual.fields.logo.fields.file.url,
-          name: valorActual.fields.name
+          name: valorActual.fields.name,
+          url: valorActual.fields.url
         })
 
         return valorAnterior
@@ -293,7 +294,7 @@ class HomeAppPage extends Component {
             <div className={`${Styles.row}`}>
               { sponsors.gold.length > 0 &&
                 <div className={`${Styles.Gold}`}>
-                  <Text className={Styles.Title}>Gold</Text>
+                    <Text className={Styles.Title}>Gold</Text>
                   <ul className={Styles.ListSponsors}>
                     { sponsors.gold.map((item) => (
                         <li key={ item.id }><img src={item.logo} alt={item.name} /></li>
@@ -307,7 +308,7 @@ class HomeAppPage extends Component {
                   <Text className={Styles.Title}>Silver</Text>
                   <ul className={Styles.ListSponsors}>
                     { sponsors.silver.map((item) => (
-                        <li key={ item.id }><img src={item.logo} alt={item.name} /></li>
+                        <li key={ item.id }><a href={item.url} target="_blank"><img src={item.logo} alt={item.name} /></a></li>
                       ))
                     }
                   </ul>
