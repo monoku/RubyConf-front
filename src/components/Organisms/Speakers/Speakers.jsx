@@ -22,7 +22,7 @@ class Speakers extends Component {
     })
     setTimeout(()=>{
       document.body.style.overflow = this.state.isOpen ? 'hidden' : 'auto'
-    }, 100)
+    }, 0)
   }
 
   render() {

@@ -60,7 +60,7 @@ class ModalCustom extends Component {
   toggleModal(toggle, isOpen = false) {
     this.props.closeHandle()
     this.setState({
-      open: toggle,
+      open: !this.props.isOpen,
       isOpen
     })
   }
