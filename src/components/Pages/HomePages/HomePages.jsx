@@ -214,7 +214,7 @@ class HomeAppPage extends Component {
               basicColor="#c0c0c0"
               PrimaryColor="#0024A7"
               SecondColor="#EB151C"
-              name="speakersDiv"
+              name="speakersDivider"
             />
             <Title className={Styles.TextBlue} type="Big">Speakers</Title>
           </div>
@@ -231,7 +231,7 @@ class HomeAppPage extends Component {
                   basicColor="#FFFFFF"
                   PrimaryColor="#4d4848"
                   SecondColor="#848383"
-                  name="scheduleDiv"
+                  name="scheduleDivider"
                 />
                 <Title className={Styles.TextWhite} type="Big">Schedule</Title>
               </div>
@@ -243,7 +243,7 @@ class HomeAppPage extends Component {
                 basicColor="#FFFFFF"
                 PrimaryColor="#4d4848"
                 SecondColor="#848383"
-                name="locationDiv"
+                name="locationDivider"
               />
               <Title className={Styles.TextWhite} type="Big">Location</Title>
             </div>
@@ -287,7 +287,7 @@ class HomeAppPage extends Component {
                 basicColor="#c0c0c0"
                 PrimaryColor="#0024A7"
                 SecondColor="#EB151C"
-                name="sponsorsDiv"
+                name="sponsorsDivider"
               />
               <Title className={Styles.TextCherry} type="Big">Sponsors</Title>
             </div>
