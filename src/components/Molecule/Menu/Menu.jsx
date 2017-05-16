@@ -82,6 +82,7 @@ class Menu extends Component {
         }, 'slow')
       }, 200)
     }
+    this.setState({menuIsOpen: false})
   }
   getTicket() {
     var win = window.open('https://ti.to/colombia-dev/rubyconf-colombia-2017/', '_blank')
