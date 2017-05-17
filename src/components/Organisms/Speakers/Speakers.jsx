@@ -41,16 +41,16 @@ class Speakers extends Component {
       <div className={`${Styles.small_12} ${Styles.large_4} ${Styles.columns}`}>
         <div className={Styles.Container}>
           <Modal isOpen={isOpenModal} closeHandle={this.toggleModal}>
-            <img className={Styles.PhotoModal} src={perfil.image} alt={perfil.name} />
+            <img className={Styles.PhotoModal} src={perfil.imageHover} alt={perfil.name} />
             <div className={Styles.ContentSpeakers}>
               <div dangerouslySetInnerHTML={createDescriptionInner()} />
               <div className={Styles.ContentDivider} />
               <div dangerouslySetInnerHTML={createDescriptionTwoInner()} />
               <div className={Styles.ContainerSponsor}>
                 <div className={Styles.ContainerSponsorContent}>
-                  <h1>Become a 2017 Sponsor!</h1>
+                  <h1>Become a sponsor!</h1>
                   <p>We need your support to help us take things to the next level.</p>
-                  <p><a>Here is a link to our sponsorship prospectus</a> in which you will find more details about or conference and the sponsorship tiers</p>
+                  <p><a href="https://drive.google.com/file/d/0B3YfVKb1r4nOLXY5VlpFV3Fkd2s/view" target="_blank">Here is a link to</a> our sponsorship prospectus in which you will find more details about or conference and the sponsorship tiers</p>
                   <div>
                     <ul className={Styles.FooterIcon}>
                       <li className={Styles.FooterItemIcon}><a className={Styles.IconLink} href="http://monoku.com" target="_black"><Icon type="IconFacebook" /></a></li>

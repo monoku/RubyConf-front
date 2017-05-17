@@ -72,7 +72,7 @@ class ModalCustom extends Component {
       <Modal style={customStyles} isOpen={isOpenModal} {...modalOptions} contentLabel="" closeTimeoutMS={500} onRequestClose={() => this.toggleModal(false)}>
         {buttonShow &&
           <div className={Styles.ModalCloseButton}>
-           <p onClick={() => this.toggleModal(false, isOpen)} className={Styles.CloseButton}>Close <Icon className={Styles.CloseButtonIcon} type="IconClose" /></p>
+           <p onClick={() => this.toggleModal(false, isOpen)} className={Styles.CloseButton}><Icon className={Styles.CloseButtonIcon} type="IconClose" /></p>
           </div>
         }
         <div className={Styles.ModalContent}>
