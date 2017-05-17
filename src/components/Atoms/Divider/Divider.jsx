@@ -9,8 +9,6 @@ class Divider extends Component {
   animateComponentEvent(name) {
     const divider = document.querySelector(`#${name}`)
     const gradient = divider.getElementsByTagName('linearGradient')[0]
-
-    console.log(divider, gradient)
     const offset = 50 // 60% view-height;
 
     const colors = {
