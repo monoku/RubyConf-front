@@ -63,7 +63,8 @@ class HomeAppPage extends Component {
           id: valorActual.sys.id,
           level: valorActual.fields.level,
           logo: valorActual.fields.logo.fields.file.url,
-          name: valorActual.fields.name
+          name: valorActual.fields.name,
+          url: valorActual.fields.url
         })
 
         return valorAnterior
@@ -213,7 +214,7 @@ class HomeAppPage extends Component {
               basicColor="#c0c0c0"
               PrimaryColor="#0024A7"
               SecondColor="#EB151C"
-              name="speakers-div"
+              name="speakersDivider"
             />
             <Title className={Styles.TextBlue} type="Big">Speakers</Title>
           </div>
@@ -230,7 +231,7 @@ class HomeAppPage extends Component {
                   basicColor="#FFFFFF"
                   PrimaryColor="#4d4848"
                   SecondColor="#848383"
-                  name="schedule-div"
+                  name="scheduleDivider"
                 />
                 <Title className={Styles.TextWhite} type="Big">Schedule</Title>
               </div>
@@ -242,7 +243,7 @@ class HomeAppPage extends Component {
                 basicColor="#FFFFFF"
                 PrimaryColor="#4d4848"
                 SecondColor="#848383"
-                name="location-div"
+                name="locationDivider"
               />
               <Title className={Styles.TextWhite} type="Big">Location</Title>
             </div>
@@ -286,14 +287,14 @@ class HomeAppPage extends Component {
                 basicColor="#c0c0c0"
                 PrimaryColor="#0024A7"
                 SecondColor="#EB151C"
-                name="sponsors-div"
+                name="sponsorsDivider"
               />
               <Title className={Styles.TextCherry} type="Big">Sponsors</Title>
             </div>
             <div className={`${Styles.row}`}>
               { sponsors.gold.length > 0 &&
                 <div className={`${Styles.Gold}`}>
-                  <Text className={Styles.Title}>Gold</Text>
+                    <Text className={Styles.Title}>Gold</Text>
                   <ul className={Styles.ListSponsors}>
                     { sponsors.gold.map((item) => (
                         <li key={ item.id }><img src={item.logo} alt={item.name} /></li>
@@ -307,7 +308,7 @@ class HomeAppPage extends Component {
                   <Text className={Styles.Title}>Silver</Text>
                   <ul className={Styles.ListSponsors}>
                     { sponsors.silver.map((item) => (
-                        <li key={ item.id }><img src={item.logo} alt={item.name} /></li>
+                        <li key={ item.id }><a href={item.url} target="_blank"><img src={item.logo} alt={item.name} /></a></li>
                       ))
                     }
                   </ul>
