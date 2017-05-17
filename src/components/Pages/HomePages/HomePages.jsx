@@ -297,7 +297,7 @@ class HomeAppPage extends Component {
                     <Text className={Styles.Title}>Gold</Text>
                   <ul className={Styles.ListSponsors}>
                     { sponsors.gold.map((item) => (
-                        <li key={ item.id }><img src={item.logo} alt={item.name} /></li>
+                        <li key={ item.id }><a href={item.url} target="_blank"><img src={item.logo} alt={item.name} /></a></li>
                       ))
                     }
                   </ul>
@@ -319,7 +319,7 @@ class HomeAppPage extends Component {
                   <Text className={Styles.Title}>Bronze</Text>
                   <ul className={Styles.ListSponsors}>
                     { sponsors.bronze.map((item) => (
-                        <li key={ item.id }><img src={item.logo} alt={item.name} /></li>
+                        <li key={ item.id }><a href={item.url} target="_blank"><img src={item.logo} alt={item.name} /></a></li>
                       ))
                     }
                   </ul>
