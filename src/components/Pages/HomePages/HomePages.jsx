@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import $ from "jquery"
 import Menu from '../../Molecule/Menu'
 import Footer from '../../Molecule/Footer'
 import CodeRuby from '../../Molecule/CodeRuby'
@@ -116,9 +117,11 @@ class HomeAppPage extends Component {
       this.previousScroll = currentScroll
     }, { passive: true })
   }
-  getCodeOfConduct() {
-    var win = window.open('https://github.com/RubyConfCo/code-of-conduct/blob/master/README.md', '_blank')
-    win.focus()
+  getCodeOfConduct(page) {
+    $('html,body').animate(
+      { scrollTop: 0
+    }, 'slow')
+    this.props.history.push(`/${page}`)
   }
 
   render() {
@@ -277,7 +280,7 @@ class HomeAppPage extends Component {
                 <div className={Styles.Divider} />
                 <Text className={Styles.Description}>We dedicate ourselves to making everyone feel welcome and at home, both during the conference and events.</Text>
                 <Text className={Styles.Description}>Our Code of Conduct offers some guidelines to ensure this for both attendees and speakers.</Text>
-                <Button  size="Small" onClick={this.getCodeOfConduct} className={Styles.Button} text="Code of conduct" theme="Red" />
+                <Button  size="Small" onClick={() => this.getCodeOfConduct('code-of-conduct')} className={Styles.Button} text="Code of conduct" theme="Red" />
               </div>
             </div>
           </section>
