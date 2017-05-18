@@ -120,7 +120,14 @@ class HomeAppPage extends Component {
     var win = window.open('https://github.com/RubyConfCo/code-of-conduct/blob/master/README.md', '_blank')
     win.focus()
   }
-
+  applyButton = () => {
+    var win = window.open('https://rubyconfco.typeform.com/to/aRZbKE', '_blank')
+    win.focus()
+  }
+  sponsorAScholar = () => {
+    let win = window.open('https://ti.to/colombia-dev/rubyconf-colombia-2017/with/q4l-zu5dcnu', '_blank')
+    win.focus()
+  }
   render() {
     const {
       sponsors,
@@ -270,6 +277,30 @@ class HomeAppPage extends Component {
               </div>
             </div>
           </section>
+          <section id='scolarship' className={Styles.ScolarShip}>
+            <div className={`${Styles.DividerSection} ${Styles.row} ${Styles.DividerScolarship}`}>
+              <Divider
+                basicColor="#c0c0c0"
+                PrimaryColor="#0024A7"
+                SecondColor="#EB151C"
+                name="scolarshipDivider"
+              />
+              <Title className={`${Styles.TextBlue} ${Styles.NameScolarship}`} type="Big">Diversity Scholarship Program</Title>
+            </div>
+            <div className={Styles.row}>
+              <div className={`${Styles.small_12} ${Styles.large_12} ${Styles.columns} ${Styles.ParagraphScolarship}`}>
+                <p> We are constantly looking for ways to make the web development community more inclusive, and our Diversity Scholarship Program, which covers the cost of a full RubyConf Colombia ticket is an iportant part of that efforts
+                </p>
+                <p>
+                  This scholarship is open to any person that self-identifies as part of an underpresented group in technology and is looking for an opportunity to grow
+                </p>
+              </div>
+              <div className={`${Styles.small_12} ${Styles.large_12} ${Styles.columns} ${Styles.DivButtons}`}>
+                <Button className={Styles.ApplyStyles} onClick={this.applyButton} text="Scholarship" theme="Primary" />
+                <Button onClick={this.sponsorAScholar} text="Sponsor a scholar" theme="Linear" />
+              </div>
+            </div>
+          </section>
           <section id="conduct" className={Styles.CodeConduc}>
             <div className={`${Styles.row} ${Styles.padding_100}`}>
               <div className={`${Styles.small_12} ${Styles.large_12} ${Styles.columns}`}>
@@ -290,6 +321,11 @@ class HomeAppPage extends Component {
                 name="sponsorsDivider"
               />
               <Title className={Styles.TextCherry} type="Big">Sponsors</Title>
+            </div>
+            <div className={Styles.ProspectusContainer}>
+              <Title type='Medium'>
+                <a className={Styles.TextCherry} href="https://drive.google.com/file/d/0B3YfVKb1r4nOLXY5VlpFV3Fkd2s/view" target="_blank"> Interested in sponsoring? Check the prospectus out</a>
+              </Title>
             </div>
             <div className={`${Styles.row}`}>
               { sponsors.gold.length > 0 &&
