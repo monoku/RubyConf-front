@@ -80,7 +80,7 @@ class Menu extends Component {
         $('html,body').animate(
           { scrollTop: $("#"+id).offset().top - 120
         }, 'slow')
-      }, 200)
+      }, 500)
     }
     this.setState({menuIsOpen: false})
   }
@@ -106,7 +106,7 @@ class Menu extends Component {
             <ul className={Styles.Menu}>
               <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('speakers')} >Speakers</a></li>
               {/*<li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('schedule')}>Schedule</a></li>*/}
-              <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('place')}>Place</a></li>
+              <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('place')}>Venue</a></li>
               <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('conduct')}>Conduct</a></li>
               <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('sponsors')}>Sponsors</a></li>
               <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('mailing')}>Mailing list</a></li>

@@ -252,7 +252,7 @@ class HomeAppPage extends Component {
                 SecondColor="#848383"
                 name="locationDivider"
               />
-              <Title className={Styles.TextWhite} type="Big">Location</Title>
+              <Title className={Styles.TextWhite} type="Big">Venue</Title>
             </div>
             <div className={`${Styles.row} ${Styles.padding_100_bottom}`}>
               <div className={`${Styles.small_12} ${Styles.large_12} ${Styles.columns}`}>
@@ -366,7 +366,7 @@ class HomeAppPage extends Component {
           <section className={Styles.Contact}>
             <div className={`${Styles.row} ${Styles.padding_100}`}>
               <div id="mailing" className={`${Styles.small_12} ${Styles.large_12} ${Styles.columns}`}>
-                <Title className={Styles.Title} type="Big">Join to our mailing list</Title>
+                <Title className={Styles.Title} type="Big">Join our mailing list</Title>
                 <Text className={Styles.Description}>Get the latest news about RubyConf Colombia, subscribing to our mailing list.</Text>
               </div>
             </div>

@@ -26,7 +26,7 @@ class GetTickets extends Component {
     return (
       <div className={Styles.row}>
         <div className={`${Styles.small_12} ${Styles.large_6} ${Styles.columns}`}>
-          <Title className={Styles[theme]} type="Big">Get the Register</Title>
+          <Title className={Styles[theme]} type="Big">Register</Title>
           <Text className={`${Styles.DescriptionFirstSection} ${Styles[theme]} `} type="Big">
             Be a part of the Ruby conference where people from all over the world will come together to share their knowledge and to inspire others.
           </Text>
