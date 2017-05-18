@@ -32,7 +32,7 @@ class Footer extends Component {
             <ul className={Styles.Footer}>
               <li className={Styles.FooterItem} onClick={()=> this.goToPage('about-us')}>About</li>
               <li className={Styles.FooterItem}><a href="mailto:organizers@rubyconf.co" target="_top">Contact</a></li>
-              <li className={Styles.FooterItem}><a href="https://github.com/RubyConfCo/code-of-conduct/blob/master/README.md" target="_black">Code of conduct </a></li>
+              <li className={Styles.FooterItem} onClick={()=> this.goToPage('code-of-conduct')}>Code of conduct</li>
               <li className={Styles.FooterItem}><a href="https://medium.com/rubyconf-colombia" target="_blank">News</a></li>
               <li className={Styles.FooterItem} onClick={()=> this.goToPage('faq')}>FAQ</li>
             </ul>
