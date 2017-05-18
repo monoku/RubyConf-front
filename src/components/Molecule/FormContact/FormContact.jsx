@@ -35,18 +35,6 @@ class FormContact extends Component {
     return (
       <form className={Styles.Container} action="//rubyconf.us11.list-manage.com/subscribe/post?u=7b7c2e5ead7427750ced71f09&amp;id=e7b035683b" encType="multipart/form-data" method="post" name="mc-embedded-subscribe-form" target="_blank">
         <div className={Styles.BoxField}>
-          <Text className={Styles.TitleField}>Name</Text>
-          <div className={Styles.Divider} />
-          <InputText
-            name="FNAME"
-            placeholder="Enter your first name"
-          />
-          <InputText
-            name="LNAME"
-            placeholder="Enter your last name"
-          />
-        </div>
-        <div className={Styles.BoxField}>
           <Text className={Styles.TitleField}>Email</Text>
           <div className={Styles.Divider} />
           <InputText
