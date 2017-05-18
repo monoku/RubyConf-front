@@ -16,7 +16,7 @@ class CodeRuby extends Component {
       <div className={Styles.Container}>
         <p>require <span style={{ color: '#2843f8' }}>&apos;date&apos;</span></p>
         <br />
-        <p><span style={{ color: '#e40011' }}>today</span> = Date.today() </p>
+        <p><span style={{ color: '#e40011' }}>today</span> = Date.today </p>
         <p>event = Date.new(<span style={{ color: '#2843f8' }}>2017, 9, 8</span>)</p>
         <br />
         <p>if <span style={{ color: '#e40011' }}>today</span> == event</p>

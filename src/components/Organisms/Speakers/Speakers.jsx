@@ -75,7 +75,7 @@ class Speakers extends Component {
             </Style>
             <p className={Styles.Name}>{perfil.name}</p>
           </div>
-          <p className={Styles.Description}>{perfil.description.substr(0, 60)}</p>
+          <p className={Styles.Description}>{perfil.description.substr(0, 57)}...</p>
           <Link onClick={this.toggleModal} IconName="IconArrowRight" >More Information</Link>
         </div>
       </div>
