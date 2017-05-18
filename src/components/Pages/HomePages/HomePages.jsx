@@ -323,9 +323,7 @@ class HomeAppPage extends Component {
               <Title className={Styles.TextCherry} type="Big">Sponsors</Title>
             </div>
             <div className={Styles.ProspectusContainer}>
-              <Title type='Medium'>
-                <a className={Styles.TextCherry} href="https://drive.google.com/file/d/0B3YfVKb1r4nOLXY5VlpFV3Fkd2s/view" target="_blank"> Interested in sponsoring? Check the prospectus out</a>
-              </Title>
+              <a className={Styles.TextCherry} href="https://drive.google.com/file/d/0B3YfVKb1r4nOLXY5VlpFV3Fkd2s/view" target="_blank"> Interested in sponsoring? Check the prospectus out</a>
             </div>
             <div className={`${Styles.row}`}>
               { sponsors.gold.length > 0 &&
