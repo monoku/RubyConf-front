@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import showdown from 'showdown'
-import Style from 'style-it'
 import Link from '../../Atoms/Link'
 import Icon from '../../Atoms/Icon'
 import Modal from '../../Molecule/Modal'
@@ -24,6 +23,14 @@ class Speakers extends Component {
       document.body.style.overflow = this.state.isOpen ? 'hidden' : 'auto'
     }, 0)
   }
+  handleMouseOver = () => {
+    this.divWithBackground.style.backgroundPositionX = '-500px, 0'
+
+  }
+
+  handleMouseOut = () => {
+    this.divWithBackground.style.backgroundPositionX = '0px'
+  }
 
   render() {
     const {
@@ -31,6 +38,12 @@ class Speakers extends Component {
     } = this.props
     const isOpenModal = this.state.isOpen
     const converter = new showdown.Converter()
+    const styleBackgroundImage = {
+      background: `url(${perfil.image}), url(${perfil.imageHover})`,
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundPositionX: '0px, 0px'
+    }
     function createDescriptionInner() {
       return {__html: converter.makeHtml(perfil.description)}
     }
@@ -62,17 +75,14 @@ class Speakers extends Component {
             </div>
           </Modal>
           <div className={Styles.Perfil} onClick={this.toggleModal}>
-            <Style>
-              {`
-                .intro{
-                  background-image: url(${perfil.image});
-                }
-                .intro:hover {
-                  background-image: url(${perfil.imageHover});
-                }
-              `}
-              <div className={`${Styles.Avatar} intro`} />
-            </Style>
+            <div
+              className={`${Styles.Avatar} intro2`}
+              onMouseOver={this.handleMouseOver}
+              onMouseOut={this.handleMouseOut}
+              style={styleBackgroundImage}
+              ref={ref => this.divWithBackground = ref}
+            >
+            </div>
             <p className={Styles.Name}>{perfil.name}</p>
           </div>
           <p className={Styles.Description}>{perfil.description.substr(0, 57)}...</p>
