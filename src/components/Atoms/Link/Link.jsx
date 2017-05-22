@@ -43,7 +43,10 @@ Link.defaultProps = {
 }
 
 Link.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object
+    ]),
   className: PropTypes.string,
   IconName: PropTypes.string
 }

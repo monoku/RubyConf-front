@@ -66,8 +66,8 @@ class Speakers extends Component {
                   <p><a href="https://drive.google.com/file/d/0B3YfVKb1r4nOLXY5VlpFV3Fkd2s/view" target="_blank">Here is a link to</a> our sponsorship prospectus in which you will find more details about or conference and the sponsorship tiers</p>
                   <div>
                     <ul className={Styles.FooterIcon}>
-                      <li className={Styles.FooterItemIcon}><a className={Styles.IconLink} href="http://monoku.com" target="_black"><Icon type="IconFacebook" /></a></li>
-                      <li className={Styles.FooterItemIcon}><a className={Styles.IconLink} href="http://monoku.com" target="_black"><Icon type="IconTwitter" /></a></li>
+                      <li className={Styles.FooterItemIcon}><a className={Styles.IconLink} href="https://www.facebook.com/RubyConfCo" target="_black"><Icon type="IconFacebook" /></a></li>
+                      <li className={Styles.FooterItemIcon}><a className={Styles.IconLink} href="https://twitter.com/RubyConfCo" target="_black"><Icon type="IconTwitter" /></a></li>
                     </ul>
                   </div>
                 </div>
