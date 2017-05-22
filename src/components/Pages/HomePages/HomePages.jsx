@@ -12,6 +12,7 @@ import Icon from '../../Atoms/Icon'
 import Divider from '../../Atoms/Divider'
 import Button from '../../Atoms/Button'
 import Title from '../../Atoms/Title'
+import Link from '../../Atoms/Link'
 import Text from '../../Atoms/Text'
 import Styles from './styles.sass'
 
@@ -81,41 +82,49 @@ class HomeAppPage extends Component {
     }
   }
 
-  animateComponentEvent() {
-    window.addEventListener('scroll', () => {
+  scrollingEvent = () => {
 
-      const currentScroll = window.scrollY || window.pageYOffset
-      const main = document.getElementsByTagName('main')[0]
-      const sgv = document.getElementById('trianglesEffect')
-      const header = document.getElementsByTagName('header')[0].offsetHeight
-      const topMain = main.getBoundingClientRect()
-      const scroolTriangle = header / sgv.childElementCount
-      const diferen = header - topMain.top
-      let showTriangle = parseInt(diferen / scroolTriangle, 10)
+    const currentScroll = window.scrollY || window.pageYOffset
+    const main = document.getElementsByTagName('main')[0]
+    const sgv = document.getElementById('trianglesEffect')
+    const header = document.getElementsByTagName('header')[0].offsetHeight
+    const topMain = main.getBoundingClientRect()
+    const scroolTriangle = header / sgv.childElementCount
+    const diferen = header - topMain.top
+    let showTriangle = parseInt(diferen / scroolTriangle, 10)
 
-      if(showTriangle > sgv.childElementCount){
-        showTriangle = sgv.childElementCount
+    if(showTriangle > sgv.childElementCount){
+      showTriangle = sgv.childElementCount
+    }
+    if(currentScroll > this.previousScroll){
+      for ( let i = 0; i <= showTriangle; i++) {
+        if(sgv.children[i]){
+          sgv.children[i].classList.remove(Styles.triangleFadeout)
+          sgv.children[i].classList.add(Styles.triangleFadein)
+        }
+        this.lastTringle = i
       }
-      if(currentScroll > this.previousScroll){
-        for ( let i = 0; i <= showTriangle; i++) {
+    }else{
+      if(topMain.top > 0){
+        for ( let i = this.lastTringle; i >= showTriangle ; i--) {
           if(sgv.children[i]){
-            sgv.children[i].classList.remove(Styles.triangleFadeout)
-            sgv.children[i].classList.add(Styles.triangleFadein)
-          }
-          this.lastTringle = i
-        }
-      }else{
-        if(topMain.top > 0){
-          for ( let i = this.lastTringle; i >= showTriangle ; i--) {
-            if(sgv.children[i]){
-              sgv.children[i].classList.remove(Styles.triangleFadein)
-              sgv.children[i].classList.add(Styles.triangleFadeout)
-            }
+            sgv.children[i].classList.remove(Styles.triangleFadein)
+            sgv.children[i].classList.add(Styles.triangleFadeout)
           }
         }
       }
-      this.previousScroll = currentScroll
-    }, { passive: true })
+    }
+    this.previousScroll = currentScroll
+
+  }
+
+  componentWillUnmount = () => {
+    window.removeEventListener('scroll', this.scrollingEvent, { passive: true })
+
+  }
+
+  animateComponentEvent() {
+    window.addEventListener('scroll', this.scrollingEvent, { passive: true })
   }
   getCodeOfConduct(page) {
     $('html,body').animate(
@@ -129,6 +138,10 @@ class HomeAppPage extends Component {
   }
   sponsorAScholar = () => {
     let win = window.open('https://ti.to/colombia-dev/rubyconf-colombia-2017/with/q4l-zu5dcnu', '_blank')
+    win.focus()
+  }
+  sponsorsLink = () => {
+    let win = window.open('https://drive.google.com/file/d/0B3YfVKb1r4nOLXY5VlpFV3Fkd2s/view','_blank')
     win.focus()
   }
   render() {
@@ -326,7 +339,9 @@ class HomeAppPage extends Component {
               <Title className={Styles.TextCherry} type="Big">Sponsors</Title>
             </div>
             <div className={Styles.ProspectusContainer}>
-              <a className={Styles.TextCherry} href="https://drive.google.com/file/d/0B3YfVKb1r4nOLXY5VlpFV3Fkd2s/view" target="_blank"> Interested in sponsoring? Check the prospectus out</a>
+              <span> Interested in sponsoring?  
+              </span>
+              <Link onClick={this.sponsorsLink} IconName="IconArrowRight" className={Styles.LinkSponsor}>Check the prospectus out</Link>
             </div>
             <div className={`${Styles.row}`}>
               { sponsors.gold.length > 0 &&
