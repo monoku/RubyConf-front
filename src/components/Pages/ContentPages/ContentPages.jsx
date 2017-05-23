@@ -11,7 +11,6 @@ import api from '../../../services/api'
 class ContentPages extends Component {
 
   constructor(props) {
-    debugger
     super(props)
     this.state = {
       loading: true,
@@ -22,25 +21,19 @@ class ContentPages extends Component {
   }
 
   componentDidMount() {
-    debugger
-    this.initFetch()
+    this.initFetch(this.props.match.params.slug)
   }
 
   componentWillReceiveProps = (nextProps) => {
-    debugger
     const nextUrl = nextProps.match.params.slug
     if (nextUrl !== this.props.match.params.slug) {
-      this.initFetch()
+      this.initFetch(nextUrl)
     }
-    this.setState({
-      location: nextUrl
-    })
   }
 
-  async initFetch() {
-    debugger
+  async initFetch(urlToSearch) {
     try {
-      const pagesData = await api.pagesData.contentPages(this.props.match.params.slug)
+      const pagesData = await api.pagesData.contentPages(urlToSearch)
       if(pagesData.items.length <= 0){
         this.props.history.push('/error/404')
       }
@@ -57,7 +50,6 @@ class ContentPages extends Component {
   render() {
     const contetPage = this.state.contetPage
     const converter = new showdown.Converter()
-    debugger
     function contentPageHtml() {
       return {__html: converter.makeHtml(contetPage.content)}
     }
@@ -70,7 +62,6 @@ class ContentPages extends Component {
           <div className={Styles.HeaderContent} >
             <Menu />
             <div className={`${Styles.row}`}>
-             <h1>{this.state.location}</h1>
              <h1>{contetPage.name}</h1>
             </div>
           </div>
