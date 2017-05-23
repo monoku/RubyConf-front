@@ -22,7 +22,7 @@ class CodeRuby extends Component {
         <p>if <span style={{ color: '#e40011' }}>today</span> == event</p>
         <p style={{ marginLeft: '15px' }}>print <span style={{ color: '#2843f8' }}>&quot;We are ready&quot;</span></p>
         <p>else</p>
-        <p style={{ marginLeft: '15px' }}>print <span style={{ color: '#2843f8' }}>&quot;Comming Soon&quot;</span></p>
+        <p style={{ marginLeft: '15px' }}>print <span style={{ color: '#2843f8' }}>&quot;Coming Soon&quot;</span></p>
         <p>end</p>
       </div>
     )
