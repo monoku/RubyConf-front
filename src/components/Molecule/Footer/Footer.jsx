@@ -21,7 +21,7 @@ class Footer extends Component {
     $('html,body').animate(
       { scrollTop: 0
     }, 'slow')
-    this.props.history.push(`/${page}`)
+    this.props.history.replace(`/${page}`)
   }
 
   render() {

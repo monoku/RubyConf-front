@@ -28,18 +28,21 @@ class Menu extends Component {
     this.animateComponentEvent()
     this.McButton()
   }
-
+  componentWillUnmount = () => {
+    window.removeEventListener('scroll', this.scrollingMenuEvent)
+  }
+  scrollingMenuEvent = () => {
+    const main = document.getElementsByTagName('main')
+    const menu = document.getElementById('menu')
+    const topMain = main[0].getBoundingClientRect().top
+    if(topMain < 0){
+      menu.classList.add(Styles.Active)
+    }else {
+       menu.classList.remove(Styles.Active)
+    }
+  }
   animateComponentEvent() {
-     window.addEventListener('scroll', () => {
-       const main = document.getElementsByTagName('main')
-       const menu = document.getElementById('menu')
-       const topMain = main[0].getBoundingClientRect().top
-       if(topMain < 0){
-         menu.classList.add(Styles.Active)
-       }else {
-          menu.classList.remove(Styles.Active)
-       }
-     })
+     window.addEventListener('scroll', this.scrollingMenuEvent)
   }
   McButton() {
   }
