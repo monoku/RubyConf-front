@@ -14,18 +14,26 @@ class ContentPages extends Component {
     super(props)
     this.state = {
       loading: true,
-      contetPage: {}
+      contetPage: {},
+      locationState: props.match.params.slug
     }
     this.initFetch = this.initFetch.bind(this)
   }
 
   componentDidMount() {
-    this.initFetch()
+    this.initFetch(this.props.match.params.slug)
   }
 
-  async initFetch() {
+  componentWillReceiveProps = (nextProps) => {
+    const nextUrl = nextProps.match.params.slug
+    if (nextUrl !== this.props.match.params.slug) {
+      this.initFetch(nextUrl)
+    }
+  }
+
+  async initFetch(urlToSearch) {
     try {
-      const pagesData = await api.pagesData.contentPages(this.props.match.params.slug)
+      const pagesData = await api.pagesData.contentPages(urlToSearch)
       if(pagesData.items.length <= 0){
         this.props.history.push('/error/404')
       }
