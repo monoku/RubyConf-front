@@ -254,7 +254,7 @@
     display: flex
     justify-content: center
     margin-top: 40px
-    
+
   .DividerScolarship
     display: flex
     flex-wrap: nowrap
@@ -339,6 +339,8 @@
           margin-top: 16px
       img
         width: 70%
+  & div:last-child
+    margin-bottom: 32px
   .DividerSection
     margin-bottom: 25px
   .ProspectusContainer
@@ -361,18 +363,21 @@
       text-decoration: none
       color: $greyish-brown
   .Gold li
-    width: 33%
+    width: 30%
     +small-only
       width: 90%
   .Silver li
-    width: 25%
+    width: 32%
     +small-only
       width: 80%
   .Bronze li
-    width: 20%
+    width: 30%
     +small-only
       width: 75%
-
+  .Supporter li
+    width: 25%
+    +small-only
+      width: 75%
 
 .Contact
   background-image: url('../../../assets/images/Background-medellin.png')
