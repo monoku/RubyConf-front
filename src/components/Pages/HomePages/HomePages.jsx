@@ -70,7 +70,7 @@ class HomeAppPage extends Component {
         })
 
         return valorAnterior
-      }, { gold: [], bronze: [], silver: [] })
+      }, { gold: [], bronze: [], silver: [], supporters: [] })
 
       this.props.saveSponsor(sponsors)
 
@@ -339,7 +339,7 @@ class HomeAppPage extends Component {
               <Title className={Styles.TextCherry} type="Big">Sponsors</Title>
             </div>
             <div className={Styles.ProspectusContainer}>
-              <span> Interested in sponsoring?  
+              <span> Interested in sponsoring?
               </span>
               <Link onClick={this.sponsorsLink} IconName="IconArrowRight" className={Styles.LinkSponsor}>Check the prospectus out</Link>
             </div>
@@ -371,6 +371,17 @@ class HomeAppPage extends Component {
                   <Text className={Styles.Title}>Bronze</Text>
                   <ul className={Styles.ListSponsors}>
                     { sponsors.bronze.map((item) => (
+                        <li key={ item.id }><a href={item.url} target="_blank"><img src={item.logo} alt={item.name} /></a></li>
+                      ))
+                    }
+                  </ul>
+                </div>
+              }
+              { sponsors.supporters.length > 0 &&
+                <div className={`${Styles.Supporter}`}>
+                  <Text className={Styles.Title}>Supporter</Text>
+                  <ul className={Styles.ListSponsors}>
+                    { sponsors.supporters.map((item) => (
                         <li key={ item.id }><a href={item.url} target="_blank"><img src={item.logo} alt={item.name} /></a></li>
                       ))
                     }
