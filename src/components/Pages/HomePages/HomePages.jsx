@@ -312,7 +312,7 @@ class HomeAppPage extends Component {
                 </p>
               </div>
               <div className={`${Styles.small_12} ${Styles.large_12} ${Styles.columns} ${Styles.DivButtons}`}>
-                <Button className={Styles.ApplyStyles} onClick={this.applyButton} text="Apply for a scholarship" theme="Primary" />
+                {/* <Button className={Styles.ApplyStyles} onClick={this.applyButton} text="Apply for a scholarship" theme="Primary" /> */}
                 <Button onClick={this.sponsorAScholar} text="Sponsor a scholar" theme="Linear" />
               </div>
             </div>
