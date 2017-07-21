@@ -4,18 +4,21 @@ import Link from '../../Atoms/Link'
 import Icon from '../../Atoms/Icon'
 import Modal from '../../Molecule/Modal'
 import Styles from './styles.sass'
-
+import { Link as LinkRouter } from 'react-router-dom'
 
 class Speakers extends Component {
   constructor(props) {
     super(props)
     this.state = {
       loading: true,
-      isOpen: false
+      isOpen: this.props.openModal
     }
     this.toggleModal = this.toggleModal.bind(this)
   }
   toggleModal() {
+    if (this.state.isOpen === true) {
+      window.history.pushState({}, null, '/')
+    }
     this.setState({
       isOpen: !this.state.isOpen
     })
@@ -30,6 +33,11 @@ class Speakers extends Component {
 
   handleMouseOut = () => {
     this.divWithBackground.style.backgroundPositionX = '0px'
+  }
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      isOpen: nextProps.openModal
+    })
   }
 
   render() {
@@ -74,19 +82,21 @@ class Speakers extends Component {
               </div>
             </div>
           </Modal>
-          <div className={Styles.Perfil} onClick={this.toggleModal}>
-            <div
-              className={`${Styles.Avatar} intro2`}
-              onMouseOver={this.handleMouseOver}
-              onMouseOut={this.handleMouseOut}
-              style={styleBackgroundImage}
-              ref={ref => this.divWithBackground = ref}
-            >
+          <LinkRouter to={`/speakers/${perfil.slug}`} >
+            <div className={Styles.Perfil} onClick={this.toggleModal}>
+              <div
+                className={`${Styles.Avatar} intro2`}
+                onMouseOver={this.handleMouseOver}
+                onMouseOut={this.handleMouseOut}
+                style={styleBackgroundImage}
+                ref={ref => this.divWithBackground = ref}
+              >
+              </div>
+              <p className={Styles.Name}>{perfil.name}</p>
             </div>
-            <p className={Styles.Name}>{perfil.name}</p>
-          </div>
-          <p className={Styles.Description}>{perfil.description.substr(0, 57)}...</p>
-          <Link onClick={this.toggleModal} IconName="IconArrowRight" >More Information</Link>
+            <p className={Styles.Description}>{perfil.description.substr(0, 57)}...</p>
+            <Link onClick={this.toggleModal} IconName="IconArrowRight" >More Information</Link>
+          </LinkRouter>
         </div>
       </div>
     )
