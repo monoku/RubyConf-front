@@ -59,7 +59,6 @@ class HomeAppPage extends Component {
       this.props.saveSpeakers(speakers)
 
       const sponsorData = await api.homePages.sponsor()
-
       let sponsors = sponsorData.items.reduce((valorAnterior, valorActual) => {
         valorAnterior[valorActual.fields.level].push({
           id: valorActual.sys.id,
@@ -73,7 +72,6 @@ class HomeAppPage extends Component {
       }, { gold: [], bronze: [], silver: [], supporters: [] })
 
       this.props.saveSponsor(sponsors)
-
       this.setState({
         loading: false
       })
