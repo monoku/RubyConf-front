@@ -26,7 +26,9 @@ class HomeAppPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      loading: true
+      loading: true,
+      speakerOpenModal: '',
+      isOpenModal: true
     }
     this.animateComponentEvent = this.animateComponentEvent.bind(this)
     this.getCodeOfConduct = this.getCodeOfConduct.bind(this)
@@ -41,14 +43,28 @@ class HomeAppPage extends Component {
     this.scrollToSpeaker()
   }
 
+
+  componentWillReceiveProps(nextProps){
+    const speakerModal = nextProps.match.params.speaker
+    this.setState({
+      speakerOpenModal: speakerModal
+    })
+  }
+
   async scrollToSpeaker (){
     const init = await this.initFetch() //eslint-disable-line
     const path = this.props.match.path.toLowerCase()
     setTimeout(()=>{
-      if (path === '/speakers') {
+      if (path.indexOf('/speakers') !== -1) {
         $('html,body').animate(
           { scrollTop: $("#speakers").offset().top - 120
         }, 'slow')
+        if (path ==='/speakers/:speaker') {
+          const speakerModal = this.props.match.params.speaker
+          this.setState({
+            speakerOpenModal: speakerModal
+          })
+        }
       }
     }, 100)
   }
@@ -59,6 +75,7 @@ class HomeAppPage extends Component {
       let speakers = speakersData.items.map((items) => {
         let speakers = {}
         speakers.id = items.sys.id
+        speakers.slug = items.fields.slug
         speakers.name = items.fields.name
         speakers.description = items.fields.description
         speakers.descriptionEs = items.fields.descriptionEs
@@ -254,9 +271,20 @@ class HomeAppPage extends Component {
             <Title className={Styles.TextBlue} type="Big">Speakers</Title>
           </div>
           <section id="speakers" className={Styles.row}>
-              { speakers.map((item) => (
-                  <Speakers key={item.id} perfil={item} />
-                ))
+              { speakers.map((item) => {
+                  let openModal = false
+                  if (item.slug === this.state.speakerOpenModal){
+                    openModal = this.state.isOpenModal
+                  }
+                  return (
+                    <Speakers
+                      key={item.id}
+                      perfil={item}
+                      openModal={openModal}
+                      
+                    />
+                  )
+                })
               }
           </section>
           <section id="schedule" className={`${Styles.Shedule}`}>
