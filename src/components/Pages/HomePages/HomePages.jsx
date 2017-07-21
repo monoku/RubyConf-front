@@ -280,8 +280,7 @@ class HomeAppPage extends Component {
                     <Speakers
                       key={item.id}
                       perfil={item}
-                      openModal={openModal}
-                      
+                      openModal={openModal}  
                     />
                   )
                 })
