@@ -31,13 +31,26 @@ class HomeAppPage extends Component {
     this.animateComponentEvent = this.animateComponentEvent.bind(this)
     this.getCodeOfConduct = this.getCodeOfConduct.bind(this)
     this.initFetch = this.initFetch.bind(this)
+    this.scrollToSpeaker = this.scrollToSpeaker.bind(this)
     this.previousScroll = 0
     this.lastTringle = 0
   }
 
   componentDidMount() {
     this.animateComponentEvent()
-    this.initFetch()
+    this.scrollToSpeaker()
+  }
+
+  async scrollToSpeaker (){
+    const init = await this.initFetch() //eslint-disable-line
+    const path = this.props.match.path.toLowerCase()
+    setTimeout(()=>{
+      if (path === '/speakers') {
+        $('html,body').animate(
+          { scrollTop: $("#speakers").offset().top - 120
+        }, 'slow')
+      }
+    }, 100)
   }
 
   async initFetch() {
@@ -117,7 +130,6 @@ class HomeAppPage extends Component {
     this.previousScroll = currentScroll
 
   }
-
   componentWillUnmount = () => {
     window.removeEventListener('scroll', this.scrollingEvent, { passive: true })
 

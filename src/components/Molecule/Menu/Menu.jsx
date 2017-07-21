@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router'
+import { Link } from 'react-router-dom'
 import Icon from '../../Atoms/Icon'
 import Button from '../../Atoms/Button'
 import Styles from './styles.sass'
@@ -107,7 +108,9 @@ class Menu extends Component {
           </a>
           <nav>
             <ul className={Styles.Menu}>
-              <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('speakers')} >Speakers</a></li>
+              <li className={Styles.MenuItem}>
+                <Link to='/speakers' onClick={()=> this.goToByScroll('speakers')}>Speakers</Link>
+                </li>
               {/*<li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('schedule')}>Schedule</a></li>*/}
               <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('place')}>Venue</a></li>
               <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('conduct')}>Conduct</a></li>
