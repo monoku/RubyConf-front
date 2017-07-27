@@ -324,6 +324,7 @@
   & .ListSponsors
     display: flex
     flex-direction: row
+    flex-wrap: wrap
     align-items: center
     justify-content: center
     padding: 30px 0px
@@ -334,11 +335,11 @@
     li
       text-align: center
       list-style: none
+      padding: 5px 15px
       & + li
         +small-only
           margin-top: 16px
-      img
-        width: 70%
+
   & div:last-child
     margin-bottom: 32px
   .DividerSection
@@ -362,22 +363,25 @@
     .LinkA
       text-decoration: none
       color: $greyish-brown
-  .Gold li
-    width: 30%
-    +small-only
-      width: 90%
-  .Silver li
-    width: 32%
-    +small-only
-      width: 80%
-  .Bronze li
-    width: 30%
-    +small-only
-      width: 75%
-  .Supporter li
-    width: 25%
-    +small-only
-      width: 75%
+
+  & .GoldImg
+    width: 200px
+  
+  & .SilverImg
+    width: 180px
+
+  & .BronzeImg
+    width: 160px
+
+  & .SupporterImg
+    width: 140px
+
+  &
+    .Gold,
+    .Silver,
+    .Bronze,
+    .Supporter
+      width: 100%
 
 .Contact
   background-image: url('../../../assets/images/Background-medellin.jpg')

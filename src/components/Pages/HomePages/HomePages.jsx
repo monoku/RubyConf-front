@@ -383,10 +383,14 @@ class HomeAppPage extends Component {
             <div className={`${Styles.row}`}>
               { sponsors.gold.length > 0 &&
                 <div className={`${Styles.Gold}`}>
-                    <Text className={Styles.Title}>Gold</Text>
+                  <Text className={Styles.Title}>Gold</Text>
                   <ul className={Styles.ListSponsors}>
                     { sponsors.gold.map((item) => (
-                        <li key={ item.id }><a href={item.url} target="_blank"><img src={item.logo} alt={item.name} /></a></li>
+                        <li key={ item.id }>
+                          <a href={item.url} target="_blank">
+                            <img src={item.logo} alt={item.name} className={Styles.GoldImg} />
+                          </a>
+                        </li>
                       ))
                     }
                   </ul>
@@ -397,7 +401,11 @@ class HomeAppPage extends Component {
                   <Text className={Styles.Title}>Silver</Text>
                   <ul className={Styles.ListSponsors}>
                     { sponsors.silver.map((item) => (
-                        <li key={ item.id }><a href={item.url} target="_blank"><img src={item.logo} alt={item.name} /></a></li>
+                        <li key={ item.id }>
+                          <a href={item.url} target="_blank">
+                            <img src={item.logo} alt={item.name} className={Styles.SilverImg} />
+                          </a>
+                        </li>
                       ))
                     }
                   </ul>
@@ -408,7 +416,11 @@ class HomeAppPage extends Component {
                   <Text className={Styles.Title}>Bronze</Text>
                   <ul className={Styles.ListSponsors}>
                     { sponsors.bronze.map((item) => (
-                        <li key={ item.id }><a href={item.url} target="_blank"><img src={item.logo} alt={item.name} /></a></li>
+                        <li key={ item.id }>
+                          <a href={item.url} target="_blank">
+                            <img src={item.logo} alt={item.name} className={Styles.BronzeImg} />
+                          </a>
+                        </li>
                       ))
                     }
                   </ul>
@@ -419,7 +431,11 @@ class HomeAppPage extends Component {
                   <Text className={Styles.Title}>Supporter</Text>
                   <ul className={Styles.ListSponsors}>
                     { sponsors.supporters.map((item) => (
-                        <li key={ item.id }><a href={item.url} target="_blank"><img src={item.logo} alt={item.name} /></a></li>
+                        <li key={ item.id }>
+                          <a href={item.url} target="_blank">
+                            <img src={item.logo} alt={item.name} className={Styles.SupporterImg} />
+                          </a>
+                        </li>
                       ))
                     }
                   </ul>
