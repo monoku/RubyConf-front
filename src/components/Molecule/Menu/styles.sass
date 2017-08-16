@@ -100,8 +100,8 @@
     margin: 0px auto
     line-height: 2.26
   a
-    font-family: $sourceCode
-    font-size: $font-text-19
+    font-family: $roboto
+    font-size: $font-text-small
     font-weight: 500
     line-height: 1.57
     letter-spacing: 1.3px
@@ -112,6 +112,9 @@
     padding: 0
     cursor: pointer
     text-decoration: none
+    +small-only
+      font-family: $sourceCode
+      font-size: $font-text-19
 
 .ContainerMobil
   position: absolute
