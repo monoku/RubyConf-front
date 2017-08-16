@@ -116,6 +116,7 @@ class Menu extends Component {
               <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('conduct')}>Conduct</a></li>
               <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('sponsors')}>Sponsors</a></li>
               <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('mailing')}>Mailing list</a></li>
+              <li className={Styles.MenuItem}><a href="https://medium.com/rubyconf-colombia" target="_blank">News</a></li> 
             </ul>
           </nav>
         </div>
