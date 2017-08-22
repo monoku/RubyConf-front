@@ -12,7 +12,6 @@ import Icon from '../../Atoms/Icon'
 import Divider from '../../Atoms/Divider'
 import Button from '../../Atoms/Button'
 import Title from '../../Atoms/Title'
-import Link from '../../Atoms/Link'
 import Text from '../../Atoms/Text'
 import Styles from './styles.sass'
 
