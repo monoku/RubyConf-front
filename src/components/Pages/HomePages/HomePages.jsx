@@ -6,7 +6,7 @@ import CodeRuby from '../../Molecule/CodeRuby'
 import FormContact from '../../Molecule/FormContact'
 import Loading from '../../Molecule/Loading'
 import GetTickets from '../../Molecule/GetTickets'
-// import Schedule from '../../Molecule/Schedule'
+import Schedule from '../../Molecule/Schedule'
 import Speakers from '../../Organisms/Speakers'
 import Icon from '../../Atoms/Icon'
 import Divider from '../../Atoms/Divider'
@@ -285,7 +285,6 @@ class HomeAppPage extends Component {
               }
           </section>
           <section id="schedule" className={`${Styles.Shedule}`}>
-            {/*
               <div className={`${Styles.DividerSection} ${Styles.row}`}>
                 <Divider
                   basicColor="#FFFFFF"
@@ -296,7 +295,6 @@ class HomeAppPage extends Component {
                 <Title className={Styles.TextWhite} type="Big">Schedule</Title>
               </div>
               <Schedule saveSchedule={this.props.saveSchedule} schedules={this.props.schedules} />
-            */}
             <GetTickets theme="WhiteColor" />
             <div id="place" className={`${Styles.DividerSection} ${Styles.row}`}>
               <Divider
