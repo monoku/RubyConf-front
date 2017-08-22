@@ -374,9 +374,7 @@ class HomeAppPage extends Component {
               <Title className={Styles.TextCherry} type="Big">Sponsors</Title>
             </div>
             <div className={Styles.ProspectusContainer}>
-              <span> Interested in sponsoring?
-              </span>
-              <Link onClick={this.sponsorsLink} IconName="IconArrowRight" className={Styles.LinkSponsor}>Check the prospectus out</Link>
+              <span> The following sponsors make this event possible</span>
             </div>
             <div className={`${Styles.row}`}>
               { sponsors.gold.length > 0 &&
