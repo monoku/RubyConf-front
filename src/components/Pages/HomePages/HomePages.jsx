@@ -12,7 +12,6 @@ import Icon from '../../Atoms/Icon'
 import Divider from '../../Atoms/Divider'
 import Button from '../../Atoms/Button'
 import Title from '../../Atoms/Title'
-import Link from '../../Atoms/Link'
 import Text from '../../Atoms/Text'
 import Styles from './styles.sass'
 
@@ -374,9 +373,7 @@ class HomeAppPage extends Component {
               <Title className={Styles.TextCherry} type="Big">Sponsors</Title>
             </div>
             <div className={Styles.ProspectusContainer}>
-              <span> Interested in sponsoring?
-              </span>
-              <Link onClick={this.sponsorsLink} IconName="IconArrowRight" className={Styles.LinkSponsor}>Check the prospectus out</Link>
+              <span> The following sponsors make this event possible</span>
             </div>
             <div className={`${Styles.row}`}>
               { sponsors.gold.length > 0 &&
