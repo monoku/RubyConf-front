@@ -111,7 +111,7 @@ class Menu extends Component {
               <li className={Styles.MenuItem}>
                 <Link to='/speakers' onClick={()=> this.goToByScroll('speakers')}>Speakers</Link>
                 </li>
-              {/*<li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('schedule')}>Schedule</a></li>*/}
+              <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('schedule')}>Schedule</a></li>
               <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('place')}>Venue</a></li>
               <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('conduct')}>Conduct</a></li>
               <li className={Styles.MenuItem}><a onClick={()=> this.goToByScroll('sponsors')}>Sponsors</a></li>
