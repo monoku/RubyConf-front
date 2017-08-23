@@ -29,6 +29,7 @@ class Schedule extends Component {
         })
         return itemsActerior
       }, { friday: [], saturday: []})
+      console.log(schedules)
       this.props.saveSchedule(schedules)
       this.setState({
         loading: false
@@ -93,7 +94,7 @@ class Schedule extends Component {
                       <div className={Styles.ListScheduleInfo}>
                         <span className={Styles.ListScheduleHour}><Icon className={Styles.ListScheduleHourIcon}  type="IconTime" /> {item.startTime} - {item.endTime}</span>
                         <p className={`${Styles.ListScheduleTitle} ${Styles.Red}`}>{item.name}</p>
-                        <p className={`${Styles.ListScheduleName} ${Styles.RedAfter}`}>{item.speaker || 'RubyConf team'}</p>
+                        <p className={Styles.ListScheduleName}>{item.speaker ? item.speaker.fields.name : 'RubyConf team'}</p>
                       </div>
                     </li>
                   ))
