@@ -1,0 +1,22 @@
+machine:
+  environment:
+    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+  node:
+    version: 6.1.0
+dependencies:
+  override:
+    - npm install yarn
+    - yarn
+  cache_directories:
+    - ~/.cache/yarn
+
+test:
+  override:
+    - yarn test
+
+deployment:
+  master:
+    branch: homePage
+    commands:
+      - yarn run build
+      - aws s3 sync build s3://${BUCKET_NAME}/

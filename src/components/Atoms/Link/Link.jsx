@@ -16,21 +16,21 @@ class Link extends Component {
     const {
       children,
       className,
-      href,
+      onClick,
       IconName
     } = this.props
 
-  const classNames = [
+    const classNames = [
       Styles.Link,
       className
     ].join(' ')
 
     return (
       <div>
-        <a className={classNames} href={href} >
+        <p onClick={()=> onClick()} className={classNames} >
           {children}
-        {IconName && <Icon type={IconName}  className={Styles.Icon} />}
-        </a>
+          {IconName && <Icon type={IconName} className={Styles.Icon} />}
+        </p>
       </div>
     )
   }
@@ -39,15 +39,16 @@ class Link extends Component {
 Link.defaultProps = {
   children: '',
   className: '',
-  IconName: '',
-  href: ''
+  IconName: ''
 }
 
 Link.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object
+    ]),
   className: PropTypes.string,
-  IconName: PropTypes.string,
-  href: PropTypes.string
+  IconName: PropTypes.string
 }
 
 export default Link

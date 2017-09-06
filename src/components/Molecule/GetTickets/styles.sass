@@ -1,0 +1,48 @@
+@import '../../../sass/_grid.scss'
+.row
+  @extend .row
+  padding: 50px 0px
+  +small-only
+    padding: 50px 10%
+
+.columns
+  @extend .columns
+
+.large_4
+  @extend .large-4
+  
+.large_6
+  @extend .large-6
+
+.large_12
+  @extend .large-12
+
+.small_12
+  @extend .small-12
+
+
+.BlueColor
+  color: $cobalt-blue
+.WhiteColor
+  color: $white-three
+
+.Ticket
+  display: block
+  margin: auto
+  text-align: center
+  width: 80%
+  +small-only
+    width: 100%
+
+.DescriptionFirstSection
+  color: $greyish-brown
+  font-family: $roboto
+  font-size: $font-text-big
+  line-height: 1.59
+  width: 454px
+  +small-only
+    width: 100%
+  &.BlueColor
+    color: $greyish-brown
+  &.WhiteColor
+    color: $white-three

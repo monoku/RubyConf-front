@@ -21,7 +21,8 @@ const Text = ({ type, children, className }) => {
 }
 
 Text.defaultProps = {
-  type: 'Big'
+  type: 'Big',
+  children: ''
 }
 
 Text.propTypes = {
@@ -30,8 +31,11 @@ Text.propTypes = {
     'Medium',
     'Small'
   ]).isRequired,
-  children: PropTypes.string.isRequired,
-  className: PropTypes.string
+  children: PropTypes.oneOfType([
+    PropTypes.string.isRequired,
+    PropTypes.array.isRequired
+  ]),
+  className: PropTypes.string.isRequired
 }
 
 export default Text

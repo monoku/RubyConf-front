@@ -1,0 +1,27 @@
+@import '../../../sass/_grid.scss'
+.row
+  @extend .row
+  padding: 50px 0px
+  background-color: #FCFBFC
+  +small-only
+    padding: 50px 10%
+
+.columns
+  @extend .columns
+  height: calc( 100vh - 100px )
+  display: flex
+  justify-content: center
+  align-items: center
+  background-color: #FCFBFC
+
+.large_4
+  @extend .large-4
+  
+.large_6
+  @extend .large-6
+
+.large_12
+  @extend .large-12
+
+.small_12
+  @extend .small-12

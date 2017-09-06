@@ -1,19 +1,19 @@
-.Title
+%Title
   color: $dark-three
   font-family: $sourceCode
 
 .Big
-  composes: Title
+  @extend %Title
   font-size: $font-title-big
   font-weight: bold
 
 .Medium
-  composes: Title
+  @extend %Title
   font-size: $font-title-big-mobil
   font-weight: 500
 
 .Small
-  composes: Title
+  @extend %Title
   font-size: $font-text-big
   font-weight: 300
   line-height: 1.29

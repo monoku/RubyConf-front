@@ -8,8 +8,8 @@ import Styles from './styles.sass'
  * @param  {Object} props  Atributos con los que se va crear el componente. Ejemplo: { theme, text, onClick, className, disabled, options, btnLoading }
  * @return {react~Component} markup Estructura Html para el Button.
  */
-const Button = ({ theme, text, onClick, className, disabled, options }) => {
-  const classNames = `${Styles[theme]} ${className} ${disabled ? Styles.Disabled : ''}`
+const Button = ({ theme, text, onClick, className, disabled, options, size }) => {
+  const classNames = `${Styles[theme]} ${className} ${disabled ? Styles.Disabled : ''} ${Styles[size]}`
 
   return (
     <button
@@ -26,6 +26,7 @@ const Button = ({ theme, text, onClick, className, disabled, options }) => {
 Button.defaultProps = {
   onClick: () => null,
   theme: 'Primary',
+  size: 'Big',
   options: null,
   btnLoading: null,
   className: '',
@@ -36,7 +37,12 @@ Button.propTypes = {
   theme: PropTypes.oneOf([
     'Primary',
     'Second',
-    'Linear'
+    'Linear',
+    'Red'
+  ]).isRequired,
+    size: PropTypes.oneOf([
+    'Big',
+    'Small'
   ]).isRequired,
   onClick: PropTypes.func,
   text: PropTypes.string.isRequired,

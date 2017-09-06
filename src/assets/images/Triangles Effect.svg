@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440px" height="645px" viewBox="0 0 1440 645" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Triangles Effect</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Landing-Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Triangles-Effect" fill="#F9F9F9">
+            <g transform="translate(-1.000000, -1.000000)">
+                <polygon id="Path-12" points="289.054688 575.94873 0.65625 646.125 0.65625 445.231934"></polygon>
+                <polygon id="Path-14" points="616.135498 617.776611 760.842163 573.024658 611.40918 459.21875"></polygon>
+                <polygon id="Path-20" points="1190.80835 389.25769 991.663086 492.999512 1262.6001 554.397949"></polygon>
+                <polygon id="Path-13" points="288.574707 575.932617 611.464844 459.167969 616.179688 618.207031"></polygon>
+                <polygon id="Path-17" points="1320.26562 535.738281 1441.64648 327.808594 1441 571.855469"></polygon>
+                <polygon id="Path-19" points="1319.52075 536.068848 1262.66016 554.445312 1190.58008 388.82959"></polygon>
+                <polygon id="Path-26" points="760.704102 573.042969 991.858398 493.130859 817.58252 605.522217"></polygon>
+                <polygon id="Path-15" points="289.063477 576.060547 1 445.426758 115.011719 313.410156"></polygon>
+                <polygon id="Path-16" points="288.927734 575.85498 532.833984 487.720703 272.666016 248.78125"></polygon>
+                <polygon id="Path-18" points="1320.01758 536.667969 1145.50977 337.630859 1442.04492 329.003906"></polygon>
+                <polygon id="Path-43" points="780.99707 398.095703 760.474609 573.21582 611.431519 459.280151"></polygon>
+                <polygon id="Path-21" points="992.447266 493.072266 968.765625 405 1190.79382 389.27121"></polygon>
+                <polygon id="Path-24" points="114.95166 313.495361 273.164063 248.673828 288.983887 575.991455"></polygon>
+                <polygon id="Path-45" points="780.760742 398.165527 992.664551 492.912109 760.47168 573.202148"></polygon>
+                <polygon id="Path-22" points="1145.51758 337.66748 968.897705 405.002441 1191.73633 389.238281"></polygon>
+                <polygon id="Path-32" points="459.587402 173.258789 532.834961 487.839355 272.050781 249"></polygon>
+                <polygon id="Path-47" points="780.973877 398.293213 969.007812 404.285156 992.366821 492.817017"></polygon>
+                <polygon id="Path-23" points="1145.64648 337.768555 1159.11914 74.3242188 1441.63672 329.269531"></polygon>
+                <polygon id="Path-27" points="1 1 115.597656 313.5625 1 445.992187"></polygon>
+                <polygon id="Path-41" points="533.331055 487.508301 780.908203 398.20874 727.865234 259.495117"></polygon>
+                <polygon id="Path-46" points="780.93042 398.268311 918.607422 239.779297 968.576172 404.541016"></polygon>
+                <polygon id="Path-25" points="1159.03955 74.3996582 1441.39844 0.767578125 1441.03516 328.972656"></polygon>
+                <polygon id="Path-28" points="115.373535 313.290527 316.972656 29.8320312 459.621094 173.289062"></polygon>
+                <polygon id="Path-35" points="459.591797 173.498535 822.719971 148.74292 532.880859 488.013672"></polygon>
+                <polygon id="Path-40" points="917.831055 239.71875 968.802979 405.008789 1145.0166 337.908203"></polygon>
+                <polygon id="Path-44" points="780.846191 398.318848 918.763672 239.806641 727.831543 259.619141"></polygon>
+                <polygon id="Path-30" points="1159.37695 74.3203125 917.722656 239.816406 1145.7832 338.267578"></polygon>
+                <polygon id="Path-31" points="317.035156 30.421875 1 1 115.397461 313.275879"></polygon>
+                <polygon id="Path-42" points="727.961914 259.588867 919.052734 239.933594 822.729492 148.57959"></polygon>
+                <polygon id="Path-29" points="1159.16235 74.4350586 992.548828 0.55859375 1441.17578 0.548828125"></polygon>
+                <polygon id="Path-34" points="459.722656 173.673828 762.203125 0.05859375 317.619141 30.5224609"></polygon>
+                <polygon id="Path-38" points="822.615723 148.89502 1160.07422 74.0878906 994.011719 0.515625"></polygon>
+                <polygon id="Path-33" points="1 1 762.089879 0.72265625 317.273438 30.5351563"></polygon>
+                <polygon id="Path-36" points="761.513672 0.376953125 822.666016 148.810547 460.033447 173.5"></polygon>
+                <polygon id="Path-37" points="822.651855 148.86084 993.615234 1 761.696045 1"></polygon>
+                <polygon id="Path-39" points="822.810547 148.842773 917.948242 239.824219 1161.57812 73.390625"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

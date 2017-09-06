@@ -24,6 +24,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+.icon-icon-close:before {
+  content: "\e90c";
+}
 .icon-ArrowDown:before {
   content: "\e900";
 }
@@ -59,6 +63,9 @@
 }
 .icon-Time:before {
   content: "\e90b";
+}
+.icon-menu:before {
+  content: "\e9bd";
 }
 .icon-facebook:before {
   content: "\ea90";

@@ -108,8 +108,10 @@ module.exports = {
       {
         exclude: [
           /\.html$/,
-          /\.(js|jsx)$/,
+          /\.(js|jsx)(\?.*)?$/,
           /\.css$/,
+          /\.sass$/,
+          /\.scss$/,
           /\.json$/,
           /\.svg$/
         ],
@@ -140,7 +142,7 @@ module.exports = {
       // in the main CSS file.
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract(
+        loaders: ExtractTextPlugin.extract(
           'style',
           'css?importLoaders=1!postcss',
           extractTextPluginOptions
@@ -155,8 +157,7 @@ module.exports = {
           "css?importLoaders=1&modules&localIdentName=[name]__[local]___[hash:base64:5]",
           "postcss",
           'sass',
-          "sass-resources"],
-        extractTextPluginOptions
+          "sass-resources"]
       },
       // JSON is not enabled by default in Webpack but both Node and Browserify
       // allow it implicitly so we also enable it.
@@ -201,18 +202,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: true,
       template: paths.appHtml,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true
-      }
     }),
     // Makes some environment variables available to the JS code, for example:
     // if (process.env.NODE_ENV === 'production') { ... }. See `./env.js`.
