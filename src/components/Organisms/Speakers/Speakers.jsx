@@ -58,6 +58,9 @@ class Speakers extends Component {
     function createDescriptionTwoInner() {
       return {__html: converter.makeHtml(perfil.descriptionEs)}
     }
+    if(perfil.name === 'Berlin Bar'){
+      return <div></div>
+    }
     return (
       <div className={`${Styles.small_12} ${Styles.large_4} ${Styles.columns}`}>
         <div className={Styles.Container}>
@@ -94,7 +97,7 @@ class Speakers extends Component {
               </div>
               <p className={Styles.Name}>{perfil.name}</p>
             </div>
-            <p className={Styles.Description}>{perfil.description.substr(0, 57)}...</p>
+            <p className={Styles.Description}>{perfil.description ? perfil.description.substr(0, 57) : ''}...</p>
             <Link onClick={this.toggleModal} IconName="IconArrowRight" >More Information</Link>
           </LinkRouter>
         </div>

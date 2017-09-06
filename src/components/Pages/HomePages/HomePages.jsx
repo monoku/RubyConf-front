@@ -78,7 +78,7 @@ class HomeAppPage extends Component {
         speakers.name = items.fields.name
         speakers.description = items.fields.description
         speakers.descriptionEs = items.fields.descriptionEs
-        speakers.image = items.fields.image.fields.file.url
+        speakers.image = typeof items.fields.image !== 'undefined' ? items.fields.image.fields.file.url : ''
         speakers.imageHover = typeof items.fields.imageHover !== 'undefined'
             ? items.fields.imageHover.fields.file.url
             : ''
